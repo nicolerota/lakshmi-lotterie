@@ -681,6 +681,116 @@
       .scratch-number { font-size: 1.9rem; }
     }
 
+    /* ─── MODAL CONTACT ─── */
+    #scratch-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(44, 40, 37, 0.55);
+      backdrop-filter: blur(4px);
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    #scratch-modal.open { display: flex; animation: fadeUp 0.3s ease both; }
+
+    .modal-box {
+      background: var(--cream);
+      max-width: 480px;
+      width: 100%;
+      padding: 48px 40px 40px;
+      position: relative;
+      text-align: center;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.15);
+    }
+    .modal-box::before {
+      content: '';
+      position: absolute;
+      inset: 8px;
+      border: 1px solid rgba(201,169,110,0.25);
+      pointer-events: none;
+    }
+    .modal-number {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 4rem;
+      font-weight: 700;
+      color: var(--gold-dark);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .modal-number-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 28px;
+    }
+    .modal-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: 14px;
+    }
+    .modal-text {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--taupe);
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+    .modal-contacts {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+    .modal-contact-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 20px;
+      border: 1px solid rgba(201,169,110,0.35);
+      background: rgba(201,169,110,0.06);
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .modal-contact-item:hover { background: rgba(201,169,110,0.14); }
+    .modal-contact-item svg { width: 18px; height: 18px; stroke: var(--gold-dark); fill: none; stroke-width: 1.8; flex-shrink: 0; }
+    .modal-close {
+      position: absolute;
+      top: 14px; right: 16px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--taupe);
+      font-size: 1.3rem;
+      line-height: 1;
+      padding: 4px 8px;
+      transition: color 0.2s;
+    }
+    .modal-close:hover { color: var(--charcoal); }
+    .modal-btn-close {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+      color: white;
+      padding: 13px 36px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+    .modal-btn-close:hover { opacity: 0.88; }
+
     /* ─── ANIMATIONS ─── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(24px); }
@@ -1119,16 +1229,18 @@ class ScratchCard {
 
   _reveal() {
     this.isRevealed = true;
+    const num = this.wrapper.dataset.num;
     let alpha = 1;
     const fade = () => {
       alpha -= 0.06;
       if (alpha <= 0) {
         this.canvas.style.display = 'none';
-        // Add green ribbon
         const ribbon = document.createElement('div');
         ribbon.className = 'revealed-ribbon';
         ribbon.textContent = '✦ Révélé ✦';
         this.wrapper.appendChild(ribbon);
+        // Ouvrir la modal avec le numéro gratté
+        openScratchModal(num);
         return;
       }
       this.canvas.style.opacity = alpha;
@@ -1137,6 +1249,22 @@ class ScratchCard {
     requestAnimationFrame(fade);
   }
 }
+
+// ── Modal contact ──
+function openScratchModal(num) {
+  document.getElementById('modal-number').textContent = num;
+  document.getElementById('scratch-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(e) {
+  if (e && e.target !== document.getElementById('scratch-modal')) return;
+  document.getElementById('scratch-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Fermer avec Echap
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
 // ── Double pack toggle ──
 let dualCurrent = 0;
@@ -1184,6 +1312,36 @@ if ('IntersectionObserver' in window) {
   });
 }
 </script>
+
+<!-- ═══════════════════════════════ MODAL CONTACT ═══════════════════════════════ -->
+<div id="scratch-modal" onclick="closeModal(event)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()" aria-label="Fermer">✕</button>
+
+    <div class="modal-number" id="modal-number">7</div>
+    <div class="modal-number-label">Votre numéro</div>
+
+    <p class="modal-title">Félicitations, vous avez gratté votre numéro !</p>
+
+    <p class="modal-text">
+      Pour finaliser votre commande et réserver ce numéro,<br/>
+      contactez Nicole :
+    </p>
+
+    <div class="modal-contacts">
+      <a href="tel:0672566422" class="modal-contact-item">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.7A2 2 0 012 0h3a2 2 0 012 1.72c.13 1 .36 1.98.72 2.92a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.16-1.16a2 2 0 012.11-.45c.94.36 1.93.59 2.92.72A2 2 0 0122 16.92z"/></svg>
+        06 72 56 64 22
+      </a>
+      <a href="mailto:nicole.rota@lakshmi-france.com" class="modal-contact-item">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        nicole.rota@lakshmi-france.com
+      </a>
+    </div>
+
+    <button class="modal-btn-close" onclick="closeModal()">J'ai compris</button>
+  </div>
+</div>
 
 </body>
 </html>
