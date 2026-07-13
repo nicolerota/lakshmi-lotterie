@@ -72,6 +72,20 @@
     .gold-rule span { width: 60px; height: 1px; background: var(--gold); display: block; }
     .gold-rule em { font-family: 'DM Sans', sans-serif; font-style: normal; color: var(--gold); font-size: 1.1rem; }
 
+    /* ─── LOGO HEADER ─── */
+    #site-logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 32px 24px 20px;
+      background: var(--cream);
+      border-bottom: 1px solid rgba(201, 169, 110, 0.18);
+    }
+    #site-logo img {
+      height: 60px;
+      width: auto;
+    }
+
     /* ─── HERO ─── */
     #hero {
       min-height: 100vh;
@@ -699,6 +713,11 @@
 </head>
 
 <body>
+
+<!-- ═══════════════════════════════ LOGO ═══════════════════════════════ -->
+<div id="site-logo">
+  <img src="logo.svg" alt="Lakshmi" />
+</div>
 
 <!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
 <section id="hero">
