@@ -539,13 +539,7 @@
       color: var(--charcoal);
       line-height: 1;
     }
-    .scratch-star {
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
-      color: var(--gold);
-      margin-top: 4px;
-      text-transform: uppercase;
-    }
+
 
     canvas.scratch-canvas {
       position: absolute;
@@ -873,11 +867,7 @@ function buildScratchGrid() {
     const numEl = document.createElement('span');
     numEl.className = 'scratch-number';
     numEl.textContent = n;
-    const star = document.createElement('span');
-    star.className = 'scratch-star';
-    star.textContent = '✦ lakshmi ✦';
     under.appendChild(numEl);
-    under.appendChild(star);
     wrapper.appendChild(under);
 
     if (isTaken) {
