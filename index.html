@@ -6,7 +6,7 @@
   <title>Loterie d'Été Lakshmi — Juillet · Août 2026</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400;1,9..40,500;1,9..40,700&display=swap" rel="stylesheet" />
 
   <style>
     /* ─── RESET & BASE ─── */
@@ -36,18 +36,29 @@
     }
 
     /* ─── TYPOGRAPHY ─── */
-    h1, h2, h3 {
-      font-family: 'Libre Baskerville', serif;
+    h1 {
+      font-family: 'DM Sans', sans-serif;
       font-weight: 700;
-      letter-spacing: 0.01em;
+      letter-spacing: -0.01em;
+    }
+    h2 {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0em;
+    }
+    h3 {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      letter-spacing: 0em;
     }
 
     .subtitle {
       font-family: 'DM Sans', sans-serif;
       font-style: italic;
+      font-weight: 300;
       font-size: 1.1rem;
       color: var(--taupe);
-      letter-spacing: 0.03em;
+      letter-spacing: 0.01em;
     }
 
     /* ─── GOLD DIVIDER ─── */
@@ -59,7 +70,7 @@
       width: fit-content;
     }
     .gold-rule span { width: 60px; height: 1px; background: var(--gold); display: block; }
-    .gold-rule em { font-family: 'Libre Baskerville', serif; font-style: normal; color: var(--gold); font-size: 1.1rem; }
+    .gold-rule em { font-family: 'DM Sans', sans-serif; font-style: normal; color: var(--gold); font-size: 1.1rem; }
 
     /* ─── HERO ─── */
     #hero {
@@ -118,17 +129,20 @@
 
     .hero-dates {
       font-family: 'DM Sans', sans-serif;
-      font-size: 1.3rem;
-      letter-spacing: 0.1em;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 1.2rem;
+      letter-spacing: 0.06em;
       color: var(--taupe);
       margin: 24px 0;
     }
 
     .hero-desc {
       max-width: 580px;
+      font-weight: 300;
       font-size: 1.05rem;
       color: var(--taupe);
-      line-height: 1.8;
+      line-height: 1.9;
       margin: 0 auto 40px;
     }
 
@@ -159,7 +173,8 @@
     .section-number {
       font-family: 'DM Sans', sans-serif;
       font-size: 5rem;
-      font-weight: 300;
+      font-weight: 200;
+      font-style: italic;
       color: rgba(201,169,110,0.15);
       line-height: 1;
       margin-bottom: -20px;
@@ -199,7 +214,7 @@
     .step-card:hover::before { opacity: 1; }
 
     .step-amount {
-      font-family: 'Libre Baskerville', serif;
+      font-family: 'DM Sans', sans-serif;
       font-size: 2.4rem;
       font-weight: 700;
       color: var(--gold-dark);
@@ -207,7 +222,8 @@
       margin-bottom: 4px;
     }
     .step-label {
-      font-size: 0.72rem;
+      font-size: 0.7rem;
+      font-weight: 300;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--taupe);
@@ -215,7 +231,8 @@
     }
     .step-reward {
       font-family: 'DM Sans', sans-serif;
-      font-size: 1.25rem;
+      font-size: 1.1rem;
+      font-weight: 300;
       font-style: italic;
       color: var(--charcoal);
     }
@@ -230,7 +247,7 @@
       border-radius: 50%;
       background: linear-gradient(135deg, var(--gold-light), var(--gold));
       display: flex; align-items: center; justify-content: center;
-      font-family: 'Libre Baskerville', serif;
+      font-family: 'DM Sans', sans-serif;
       font-size: 1rem;
       font-weight: 600;
       color: white;
@@ -248,11 +265,12 @@
     }
     .priority-note p {
       font-family: 'DM Sans', sans-serif;
-      font-size: 1.1rem;
+      font-size: 1rem;
+      font-weight: 300;
       font-style: italic;
       color: var(--taupe);
     }
-    .priority-note strong { color: var(--gold-dark); font-style: normal; }
+    .priority-note strong { color: var(--gold-dark); font-style: normal; font-weight: 700; }
 
     /* ─── PRIZES ─── */
     #prizes { background: var(--cream); }
@@ -278,7 +296,7 @@
       width: 40px; height: 40px;
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      font-family: 'Libre Baskerville', serif;
+      font-family: 'DM Sans', sans-serif;
       font-size: 1.1rem;
       font-weight: 700;
       color: white;
@@ -329,14 +347,16 @@
       margin-bottom: 8px;
     }
     .prize-body h3 {
-      font-size: 1.3rem;
+      font-size: 1.2rem;
+      font-weight: 600;
       color: var(--charcoal);
       margin-bottom: 10px;
     }
     .prize-body p {
       font-size: 0.9rem;
+      font-weight: 300;
       color: var(--taupe);
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
     /* ─── GUARANTEED GIFT ─── */
@@ -390,12 +410,13 @@
     }
 
     .gift-content h3 {
-      font-family: 'Libre Baskerville', serif;
-      font-size: 1.8rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.7rem;
+      font-weight: 600;
       color: var(--gold-light);
       margin-bottom: 16px;
     }
-    .gift-content p { color: rgba(255,255,255,0.75); font-size: 1rem; line-height: 1.8; }
+    .gift-content p { color: rgba(255,255,255,0.75); font-size: 1rem; font-weight: 300; line-height: 1.9; }
 
     .gift-items {
       list-style: none;
@@ -409,6 +430,7 @@
       border-bottom: 1px solid rgba(255,255,255,0.06);
       color: rgba(255,255,255,0.8);
       font-size: 0.95rem;
+      font-weight: 300;
     }
     .gift-items li:last-child { border-bottom: none; }
     .gift-items .dot {
@@ -429,7 +451,7 @@
       background: rgba(201,169,110,0.08);
     }
     .voucher-badge .amount {
-      font-family: 'Libre Baskerville', serif;
+      font-family: 'DM Sans', sans-serif;
       font-size: 2rem;
       font-weight: 700;
       color: var(--gold);
@@ -449,7 +471,8 @@
     }
     #scratch .section-header p {
       font-family: 'DM Sans', sans-serif;
-      font-size: 1.1rem;
+      font-size: 1rem;
+      font-weight: 300;
       font-style: italic;
       color: var(--taupe);
       margin-top: 12px;
@@ -510,7 +533,7 @@
       user-select: none;
     }
     .scratch-number {
-      font-family: 'Libre Baskerville', serif;
+      font-family: 'DM Sans', sans-serif;
       font-size: 2.4rem;
       font-weight: 700;
       color: var(--charcoal);
