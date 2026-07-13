@@ -337,6 +337,88 @@
     }
     /* When you add real images: .prize-img img { width:100%; height:100%; object-fit:cover; } */
 
+    /* ── Double pack toggle (lot 1) ── */
+    .prize-img-dual {
+      position: relative;
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--cream-dark) 0%, #EDE4D6 100%);
+    }
+    .prize-img-dual::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 60%, rgba(255,255,255,0.5));
+      pointer-events: none;
+      z-index: 1;
+    }
+    .dual-slide {
+      display: flex;
+      width: 200%;
+      height: 100%;
+      transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .dual-slide.show-second { transform: translateX(-50%); }
+    .dual-panel {
+      width: 50%;
+      height: 100%;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .dual-panel img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .dual-label {
+      position: absolute;
+      bottom: 10px; left: 12px;
+      z-index: 3;
+      background: rgba(44,40,37,0.72);
+      color: white;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      backdrop-filter: blur(4px);
+    }
+    .dual-arrow {
+      position: absolute;
+      right: 12px; top: 50%;
+      transform: translateY(-50%);
+      z-index: 3;
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(201,169,110,0.6);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+    }
+    .dual-arrow:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+    }
+    .dual-arrow:hover svg { stroke: white; }
+    .dual-arrow svg { width: 16px; height: 16px; stroke: var(--gold-dark); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: stroke 0.2s; }
+    .dual-dots {
+      position: absolute;
+      bottom: 10px; right: 12px;
+      z-index: 3;
+      display: flex; gap: 5px;
+    }
+    .dual-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: rgba(255,255,255,0.45);
+      transition: background 0.3s;
+      cursor: pointer;
+    }
+    .dual-dot.active { background: var(--gold); }
+
     .prize-body { padding: 28px 28px 32px; }
     .prize-value {
       font-size: 0.7rem;
@@ -707,20 +789,45 @@
       <!-- LOT 1 -->
       <div class="prize-card">
         <span class="prize-rank rank-1">1</span>
-        <div class="prize-img">
-          <!-- Remplacez par votre image : <img src="lot1.jpg" alt="Pack visage ou corps"> -->
-          <div class="prize-img-placeholder">
-            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
-              <rect x="6" y="10" width="36" height="30" rx="2"/>
-              <circle cx="24" cy="25" r="8"/>
-              <path d="M6 16h36"/>
-            </svg>
-            <span>Visuel du lot · à venir</span>
+
+        <div class="prize-img-dual" id="dualPack">
+          <div class="dual-slide" id="dualSlide">
+
+            <!-- PANEL VISAGE -->
+            <div class="dual-panel">
+              <!-- Ajoutez votre image : <img src="lot1-visage.jpg" alt="Pack Visage"> -->
+              <div class="prize-img-placeholder">
+                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="24" cy="20" r="10"/><path d="M8 42c0-8.8 7.2-16 16-16s16 7.2 16 16"/></svg>
+                <span>Pack Visage · photo à venir</span>
+              </div>
+              <span class="dual-label">Pack Visage</span>
+            </div>
+
+            <!-- PANEL CORPS -->
+            <div class="dual-panel">
+              <!-- Ajoutez votre image : <img src="lot1-corps.jpg" alt="Pack Corps"> -->
+              <div class="prize-img-placeholder">
+                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M24 6v36M16 12c0 0 2 6 8 6s8-6 8-6M16 36c0 0 2-6 8-6s8 6 8 6"/></svg>
+                <span>Pack Corps · photo à venir</span>
+              </div>
+              <span class="dual-label">Pack Corps</span>
+            </div>
+
+          </div>
+
+          <!-- Flèche + dots -->
+          <button class="dual-arrow" id="dualArrow" aria-label="Voir l'autre pack" onclick="toggleDual()">
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+          <div class="dual-dots">
+            <span class="dual-dot active" id="dot0" onclick="goToPanel(0)"></span>
+            <span class="dual-dot"        id="dot1" onclick="goToPanel(1)"></span>
           </div>
         </div>
+
         <div class="prize-body">
           <p class="prize-value">Valeur 250€</p>
-          <h3>Pack Produits Visage ou Corps</h3>
+          <h3>Pack Produits Visage <em style="font-weight:300;font-style:italic;color:var(--taupe)">ou</em> Corps</h3>
           <p>Une sélection de produits Lakshmi au choix — visage ou corps — pour enrichir votre gamme et régaler vos clientes.</p>
         </div>
       </div>
@@ -1030,6 +1137,30 @@ class ScratchCard {
     requestAnimationFrame(fade);
   }
 }
+
+// ── Double pack toggle ──
+let dualCurrent = 0;
+
+function goToPanel(idx) {
+  dualCurrent = idx;
+  const slide  = document.getElementById('dualSlide');
+  const arrow  = document.getElementById('dualArrow');
+  const dot0   = document.getElementById('dot0');
+  const dot1   = document.getElementById('dot1');
+  if (!slide) return;
+
+  if (idx === 1) {
+    slide.classList.add('show-second');
+    arrow.style.transform = 'translateY(-50%) scaleX(-1)';
+    dot0.classList.remove('active'); dot1.classList.add('active');
+  } else {
+    slide.classList.remove('show-second');
+    arrow.style.transform = 'translateY(-50%) scaleX(1)';
+    dot0.classList.add('active'); dot1.classList.remove('active');
+  }
+}
+
+function toggleDual() { goToPanel(dualCurrent === 0 ? 1 : 0); }
 
 // Init on load
 buildScratchGrid();
