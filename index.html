@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Loterie d'Été Lakshmi — Juillet · Août 2026</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet" />
 
   <style>
     /* ─── RESET & BASE ─── */
@@ -27,7 +28,7 @@
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Lato', sans-serif;
+      font-family: 'DM Sans', sans-serif;
       background-color: var(--cream);
       color: var(--charcoal);
       font-weight: 300;
@@ -36,17 +37,17 @@
 
     /* ─── TYPOGRAPHY ─── */
     h1, h2, h3 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 600;
-      letter-spacing: 0.02em;
+      font-family: 'Libre Baskerville', serif;
+      font-weight: 700;
+      letter-spacing: 0.01em;
     }
 
     .subtitle {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'DM Sans', sans-serif;
       font-style: italic;
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       color: var(--taupe);
-      letter-spacing: 0.05em;
+      letter-spacing: 0.03em;
     }
 
     /* ─── GOLD DIVIDER ─── */
@@ -58,7 +59,7 @@
       width: fit-content;
     }
     .gold-rule span { width: 60px; height: 1px; background: var(--gold); display: block; }
-    .gold-rule em { font-family: 'Cormorant Garamond', serif; font-style: normal; color: var(--gold); font-size: 1.1rem; }
+    .gold-rule em { font-family: 'Libre Baskerville', serif; font-style: normal; color: var(--gold); font-size: 1.1rem; }
 
     /* ─── NAV ─── */
     nav {
@@ -74,8 +75,8 @@
       border-bottom: 1px solid rgba(201, 169, 110, 0.25);
     }
     .nav-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.4rem;
       font-weight: 700;
       letter-spacing: 0.15em;
       color: var(--charcoal);
@@ -84,6 +85,7 @@
     .nav-logo span { color: var(--gold); }
     .nav-links { display: flex; gap: 32px; list-style: none; }
     .nav-links a {
+      font-family: 'DM Sans', sans-serif;
       font-size: 0.78rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -132,7 +134,7 @@
       text-transform: uppercase;
       padding: 6px 20px;
       margin-bottom: 32px;
-      font-family: 'Lato', sans-serif;
+      font-family: 'DM Sans', sans-serif;
       font-weight: 700;
     }
 
@@ -149,7 +151,7 @@
     }
 
     .hero-dates {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'DM Sans', sans-serif;
       font-size: 1.3rem;
       letter-spacing: 0.1em;
       color: var(--taupe);
@@ -169,7 +171,7 @@
       background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
       color: white;
       padding: 16px 44px;
-      font-family: 'Lato', sans-serif;
+      font-family: 'DM Sans', sans-serif;
       font-size: 0.78rem;
       font-weight: 700;
       letter-spacing: 0.18em;
@@ -189,7 +191,7 @@
     .section-header { text-align: center; margin-bottom: 60px; }
     .section-header h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); color: var(--charcoal); margin-bottom: 8px; }
     .section-number {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'DM Sans', sans-serif;
       font-size: 5rem;
       font-weight: 300;
       color: rgba(201,169,110,0.15);
@@ -231,7 +233,7 @@
     .step-card:hover::before { opacity: 1; }
 
     .step-amount {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Libre Baskerville', serif;
       font-size: 2.4rem;
       font-weight: 700;
       color: var(--gold-dark);
@@ -246,7 +248,7 @@
       margin-bottom: 20px;
     }
     .step-reward {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'DM Sans', sans-serif;
       font-size: 1.25rem;
       font-style: italic;
       color: var(--charcoal);
@@ -262,7 +264,7 @@
       border-radius: 50%;
       background: linear-gradient(135deg, var(--gold-light), var(--gold));
       display: flex; align-items: center; justify-content: center;
-      font-family: 'Playfair Display', serif;
+      font-family: 'Libre Baskerville', serif;
       font-size: 1rem;
       font-weight: 600;
       color: white;
@@ -279,7 +281,7 @@
       margin-right: auto;
     }
     .priority-note p {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'DM Sans', sans-serif;
       font-size: 1.1rem;
       font-style: italic;
       color: var(--taupe);
@@ -310,7 +312,7 @@
       width: 40px; height: 40px;
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      font-family: 'Playfair Display', serif;
+      font-family: 'Libre Baskerville', serif;
       font-size: 1.1rem;
       font-weight: 700;
       color: white;
@@ -422,7 +424,7 @@
     }
 
     .gift-content h3 {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Libre Baskerville', serif;
       font-size: 1.8rem;
       color: var(--gold-light);
       margin-bottom: 16px;
@@ -461,7 +463,7 @@
       background: rgba(201,169,110,0.08);
     }
     .voucher-badge .amount {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Libre Baskerville', serif;
       font-size: 2rem;
       font-weight: 700;
       color: var(--gold);
@@ -480,7 +482,7 @@
       padding-bottom: 100px;
     }
     #scratch .section-header p {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'DM Sans', sans-serif;
       font-size: 1.1rem;
       font-style: italic;
       color: var(--taupe);
@@ -542,7 +544,7 @@
       user-select: none;
     }
     .scratch-number {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Libre Baskerville', serif;
       font-size: 2.4rem;
       font-weight: 700;
       color: var(--charcoal);
@@ -877,7 +879,7 @@
       <!-- Generé par JS -->
     </div>
 
-    <p style="text-align:center;margin-top:48px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;color:var(--taupe);">
+    <p style="text-align:center;margin-top:48px;font-family:'DM Sans',sans-serif;font-style:italic;font-size:1.05rem;color:var(--taupe);">
       Pour réserver votre numéro, contactez-nous après avoir passé votre commande.<br/>
       <a href="mailto:alice.rota@lakshmi-france.com" style="color:var(--gold-dark);text-decoration:none;">alice.rota@lakshmi-france.com</a>
     </p>
@@ -983,11 +985,11 @@ class ScratchCard {
 
     // Grattez text
     this.ctx.fillStyle = 'rgba(255,255,255,0.65)';
-    this.ctx.font = `bold ${Math.floor(w * 0.1)}px 'Lato', sans-serif`;
+    this.ctx.font = `bold ${Math.floor(w * 0.1)}px 'DM Sans', sans-serif`;
     this.ctx.textAlign = 'center';
     this.ctx.textBaseline = 'middle';
     this.ctx.fillText('GRATTEZ', w / 2, h / 2 - 10);
-    this.ctx.font = `${Math.floor(w * 0.07)}px 'Cormorant Garamond', serif`;
+    this.ctx.font = `${Math.floor(w * 0.07)}px 'DM Sans', sans-serif`;
     this.ctx.fillStyle = 'rgba(255,255,255,0.45)';
     this.ctx.fillText('✦', w / 2, h / 2 + 14);
 
