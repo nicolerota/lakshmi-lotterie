@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loterie d'Été Lakshmi — Juillet · Août 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── RESET & BASE ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold:       #C9A96E;
+      --gold-light: #E8D5A3;
+      --gold-dark:  #9E7A3F;
+      --cream:      #FAF7F2;
+      --cream-dark: #F0EAE0;
+      --rose:       #E8C5B4;
+      --sage:       #A7BA94;
+      --charcoal:   #2C2825;
+      --taupe:      #7A6E65;
+      --white:      #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background-color: var(--cream);
+      color: var(--charcoal);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* ─── TYPOGRAPHY ─── */
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--taupe);
+      letter-spacing: 0.05em;
+    }
+
+    /* ─── GOLD DIVIDER ─── */
+    .gold-rule {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 20px auto;
+      width: fit-content;
+    }
+    .gold-rule span { width: 60px; height: 1px; background: var(--gold); display: block; }
+    .gold-rule em { font-family: 'Cormorant Garamond', serif; font-style: normal; color: var(--gold); font-size: 1.1rem; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 48px;
+      background: rgba(250, 247, 242, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(201, 169, 110, 0.25);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--charcoal);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--taupe);
+      text-decoration: none;
+      transition: color 0.25s;
+    }
+    .nav-links a:hover { color: var(--gold-dark); }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 120px 32px 80px;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 20% 80%, rgba(168, 186, 148, 0.18) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(232, 197, 180, 0.22) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(201, 169, 110, 0.08) 0%, transparent 70%),
+        var(--cream);
+    }
+
+    /* Decorative botanical lines */
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image:
+        radial-gradient(circle at 10% 10%, rgba(201,169,110,0.06) 1px, transparent 1px),
+        radial-gradient(circle at 90% 90%, rgba(201,169,110,0.06) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      border: 1px solid var(--gold);
+      color: var(--gold-dark);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 6px 20px;
+      margin-bottom: 32px;
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+    }
+
+    #hero h1 {
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      line-height: 1.08;
+      color: var(--charcoal);
+      margin-bottom: 12px;
+    }
+    #hero h1 em {
+      font-style: italic;
+      color: var(--gold-dark);
+      display: block;
+    }
+
+    .hero-dates {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      letter-spacing: 0.1em;
+      color: var(--taupe);
+      margin: 24px 0;
+    }
+
+    .hero-desc {
+      max-width: 580px;
+      font-size: 1.05rem;
+      color: var(--taupe);
+      line-height: 1.8;
+      margin: 0 auto 40px;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+      color: white;
+      padding: 16px 44px;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(158, 122, 63, 0.35);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(158, 122, 63, 0.45);
+    }
+
+    /* ─── SECTION BASE ─── */
+    section { padding: 90px 48px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-header { text-align: center; margin-bottom: 60px; }
+    .section-header h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); color: var(--charcoal); margin-bottom: 8px; }
+    .section-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem;
+      font-weight: 300;
+      color: rgba(201,169,110,0.15);
+      line-height: 1;
+      margin-bottom: -20px;
+      display: block;
+    }
+
+    /* ─── HOW IT WORKS ─── */
+    #how {
+      background: var(--white);
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      margin-top: 20px;
+    }
+
+    .step-card {
+      text-align: center;
+      padding: 44px 32px;
+      border: 1px solid rgba(201,169,110,0.25);
+      position: relative;
+      transition: all 0.35s ease;
+      background: var(--cream);
+    }
+    .step-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold-light), var(--gold), var(--gold-light));
+      opacity: 0;
+      transition: opacity 0.35s;
+    }
+    .step-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(0,0,0,0.07); }
+    .step-card:hover::before { opacity: 1; }
+
+    .step-amount {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--gold-dark);
+      display: block;
+      margin-bottom: 4px;
+    }
+    .step-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--taupe);
+      margin-bottom: 20px;
+    }
+    .step-reward {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-style: italic;
+      color: var(--charcoal);
+    }
+    .step-nums {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 16px;
+    }
+    .num-chip {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: white;
+    }
+
+    .priority-note {
+      text-align: center;
+      margin-top: 48px;
+      padding: 24px 32px;
+      background: linear-gradient(135deg, rgba(201,169,110,0.08), rgba(232,197,180,0.12));
+      border: 1px solid rgba(201,169,110,0.3);
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .priority-note p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--taupe);
+    }
+    .priority-note strong { color: var(--gold-dark); font-style: normal; }
+
+    /* ─── PRIZES ─── */
+    #prizes { background: var(--cream); }
+
+    .prizes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .prize-card {
+      background: var(--white);
+      border: 1px solid rgba(201,169,110,0.2);
+      overflow: hidden;
+      transition: all 0.35s ease;
+      position: relative;
+    }
+    .prize-card:hover { transform: translateY(-8px); box-shadow: 0 16px 50px rgba(0,0,0,0.09); }
+
+    .prize-rank {
+      position: absolute;
+      top: 16px; left: 16px;
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: white;
+      z-index: 2;
+    }
+    .rank-1 { background: linear-gradient(135deg, #C9A96E, #9E7A3F); }
+    .rank-2 { background: linear-gradient(135deg, #B8C4B1, #7A9A6A); }
+    .rank-3 { background: linear-gradient(135deg, #C4A882, #8B6F47); }
+
+    .prize-img {
+      width: 100%;
+      height: 220px;
+      background: linear-gradient(135deg, var(--cream-dark) 0%, #EDE4D6 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .prize-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 60%, rgba(255,255,255,0.5));
+    }
+    .prize-img-placeholder {
+      text-align: center;
+      color: rgba(201,169,110,0.6);
+    }
+    .prize-img-placeholder svg { width: 48px; height: 48px; margin-bottom: 10px; opacity: 0.5; }
+    .prize-img-placeholder span {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    /* When you add real images: .prize-img img { width:100%; height:100%; object-fit:cover; } */
+
+    .prize-body { padding: 28px 28px 32px; }
+    .prize-value {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .prize-body h3 {
+      font-size: 1.3rem;
+      color: var(--charcoal);
+      margin-bottom: 10px;
+    }
+    .prize-body p {
+      font-size: 0.9rem;
+      color: var(--taupe);
+      line-height: 1.6;
+    }
+
+    /* ─── GUARANTEED GIFT ─── */
+    #gift {
+      background: linear-gradient(135deg, var(--charcoal) 0%, #3D3530 100%);
+      color: white;
+      text-align: center;
+    }
+    #gift .section-number { color: rgba(201,169,110,0.15); }
+    #gift h2 { color: var(--gold-light); }
+    #gift .subtitle { color: rgba(232,213,163,0.7); }
+
+    .gift-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      margin-top: 60px;
+    }
+
+    .gift-visual {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(201,169,110,0.3);
+      height: 320px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .gift-visual::before {
+      content: '';
+      position: absolute;
+      inset: 8px;
+      border: 1px solid rgba(201,169,110,0.15);
+      pointer-events: none;
+    }
+    .gift-visual-placeholder {
+      text-align: center;
+      color: rgba(201,169,110,0.5);
+    }
+    .gift-visual-placeholder svg { width: 56px; height: 56px; margin-bottom: 12px; }
+    .gift-visual-placeholder span {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(201,169,110,0.6);
+    }
+
+    .gift-content h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--gold-light);
+      margin-bottom: 16px;
+    }
+    .gift-content p { color: rgba(255,255,255,0.75); font-size: 1rem; line-height: 1.8; }
+
+    .gift-items {
+      list-style: none;
+      margin: 28px 0;
+    }
+    .gift-items li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.8);
+      font-size: 0.95rem;
+    }
+    .gift-items li:last-child { border-bottom: none; }
+    .gift-items .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+      margin-top: 9px;
+    }
+
+    .voucher-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      border: 1px solid var(--gold);
+      padding: 14px 24px;
+      margin-top: 20px;
+      background: rgba(201,169,110,0.08);
+    }
+    .voucher-badge .amount {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+    .voucher-badge .text {
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.7);
+      text-align: left;
+      line-height: 1.4;
+    }
+
+    /* ─── SCRATCH CARDS ─── */
+    #scratch {
+      background: var(--cream);
+      padding-bottom: 100px;
+    }
+    #scratch .section-header p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--taupe);
+      margin-top: 12px;
+    }
+
+    .scratch-legend {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      color: var(--taupe);
+    }
+    .legend-dot {
+      width: 14px; height: 14px; border-radius: 50%;
+    }
+    .legend-available { background: linear-gradient(135deg, var(--gold-light), var(--gold)); }
+    .legend-taken { background: #C8C0B8; }
+    .legend-revealed { background: linear-gradient(135deg, #9CAF88, #6A8A5A); }
+
+    .scratch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+      gap: 16px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .scratch-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      cursor: crosshair;
+      transition: transform 0.2s;
+    }
+    .scratch-wrapper:not(.taken):hover { transform: scale(1.04); }
+    .scratch-wrapper.taken { cursor: default; opacity: 0.6; }
+    .scratch-wrapper.taken:hover { transform: none; }
+
+    .scratch-under {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(145deg, var(--cream) 0%, #EDE4D8 100%);
+      user-select: none;
+    }
+    .scratch-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      line-height: 1;
+    }
+    .scratch-star {
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      margin-top: 4px;
+      text-transform: uppercase;
+    }
+
+    canvas.scratch-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      touch-action: none;
+    }
+
+    .taken-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(200,192,184,0.92);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--taupe);
+    }
+    .taken-overlay svg { width: 22px; height: 22px; opacity: 0.5; margin-bottom: 6px; }
+
+    /* Revealed state overlay */
+    .revealed-ribbon {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(135deg, var(--sage), #6A8A5A);
+      color: white;
+      font-size: 0.55rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 5px;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--charcoal);
+      color: rgba(255,255,255,0.45);
+      text-align: center;
+      padding: 40px 32px;
+      font-size: 0.82rem;
+      line-height: 1.8;
+    }
+    footer strong { color: var(--gold); font-weight: 400; }
+    footer a { color: var(--gold-light); text-decoration: none; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      section { padding: 70px 24px; }
+      .steps-grid { grid-template-columns: 1fr; gap: 24px; }
+      .prizes-grid { grid-template-columns: 1fr; }
+      .gift-inner { grid-template-columns: 1fr; gap: 40px; }
+      .gift-visual { height: 220px; }
+      .scratch-grid { grid-template-columns: repeat(auto-fill, minmax(85px, 1fr)); gap: 12px; }
+      .scratch-number { font-size: 1.9rem; }
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { animation: fadeUp 0.7s ease both; }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.22s; }
+    .delay-3 { animation-delay: 0.34s; }
+    .delay-4 { animation-delay: 0.46s; }
+
+    @keyframes shimmer {
+      0%   { background-position: -200% center; }
+      100% { background-position:  200% center; }
+    }
+    .shimmer {
+      background: linear-gradient(90deg, var(--gold-dark) 0%, var(--gold-light) 50%, var(--gold-dark) 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 4s linear infinite;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ═══════════════════════════════ NAV ═══════════════════════════════ -->
+<nav>
+  <a href="#" class="nav-logo">LAKSHMI<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#how">Participer</a></li>
+    <li><a href="#prizes">Les Lots</a></li>
+    <li><a href="#gift">Cadeau Garanti</a></li>
+    <li><a href="#scratch">Gratter</a></li>
+  </ul>
+</nav>
+
+<!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+<section id="hero">
+  <div class="hero-tag fade-up">Réservé aux Professionnelles · Été 2026</div>
+
+  <h1 class="fade-up delay-1">
+    Grande Loterie<br />
+    <em class="shimmer">d'Été</em>
+  </h1>
+
+  <p class="hero-dates fade-up delay-2">15 Juillet — 31 Août 2026</p>
+
+  <div class="gold-rule fade-up delay-2">
+    <span></span><em>✦</em><span></span>
+  </div>
+
+  <p class="hero-desc fade-up delay-3">
+    Chaque commande vous ouvre les portes d'un tirage exclusif.<br/>
+    Choisissez vos numéros, grattez votre ticket et découvrez si vous faites partie des heureuses gagnantes — sans oublier que chaque participante repart avec un cadeau garanti.
+  </p>
+
+  <a href="#scratch" class="btn-primary fade-up delay-4">Gratter mes numéros</a>
+</section>
+
+<!-- ═══════════════════════════════ HOW ═══════════════════════════════ -->
+<section id="how">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">01</span>
+      <h2>Comment participer</h2>
+      <p class="subtitle">Plus votre commande est importante, plus vous avez de chances</p>
+      <div class="gold-rule"><span></span><em>✦</em><span></span></div>
+    </div>
+
+    <div class="steps-grid">
+      <!-- 300 -->
+      <div class="step-card fade-up">
+        <span class="step-amount">&gt; 300€</span>
+        <p class="step-label">de commande</p>
+        <div class="step-nums">
+          <span class="num-chip">1</span>
+        </div>
+        <p class="step-reward" style="margin-top:16px;">Choisissez <strong>1 numéro</strong><br/>parmi les 31 disponibles</p>
+      </div>
+
+      <!-- 600 -->
+      <div class="step-card fade-up delay-1">
+        <span class="step-amount">&gt; 600€</span>
+        <p class="step-label">de commande</p>
+        <div class="step-nums">
+          <span class="num-chip">1</span>
+          <span class="num-chip">2</span>
+        </div>
+        <p class="step-reward" style="margin-top:16px;">Choisissez <strong>2 numéros</strong><br/>parmi les 31 disponibles</p>
+      </div>
+
+      <!-- 900 -->
+      <div class="step-card fade-up delay-2">
+        <span class="step-amount">&gt; 900€</span>
+        <p class="step-label">de commande</p>
+        <div class="step-nums">
+          <span class="num-chip">1</span>
+          <span class="num-chip">2</span>
+          <span class="num-chip">3</span>
+        </div>
+        <p class="step-reward" style="margin-top:16px;">Choisissez <strong>3 numéros</strong><br/>parmi les 31 disponibles</p>
+      </div>
+    </div>
+
+    <div class="priority-note fade-up">
+      <p>✦ &nbsp;Les premières à commander auront la priorité dans le <strong>choix de leurs numéros préférés</strong>. N'attendez pas — les bons numéros partent vite !&nbsp; ✦</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ PRIZES ═══════════════════════════════ -->
+<section id="prizes">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">02</span>
+      <h2>Les Lots à Gagner</h2>
+      <p class="subtitle">Trois lots d'exception pour sublimer votre pratique professionnelle</p>
+      <div class="gold-rule"><span></span><em>✦</em><span></span></div>
+    </div>
+
+    <div class="prizes-grid">
+
+      <!-- LOT 1 -->
+      <div class="prize-card">
+        <span class="prize-rank rank-1">1</span>
+        <div class="prize-img">
+          <!-- Remplacez par votre image : <img src="lot1.jpg" alt="Pack visage ou corps"> -->
+          <div class="prize-img-placeholder">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="6" y="10" width="36" height="30" rx="2"/>
+              <circle cx="24" cy="25" r="8"/>
+              <path d="M6 16h36"/>
+            </svg>
+            <span>Visuel du lot · à venir</span>
+          </div>
+        </div>
+        <div class="prize-body">
+          <p class="prize-value">Valeur 250€</p>
+          <h3>Pack Produits Visage ou Corps</h3>
+          <p>Une sélection de produits Lakshmi au choix — visage ou corps — pour enrichir votre gamme et régaler vos clientes.</p>
+        </div>
+      </div>
+
+      <!-- LOT 2 -->
+      <div class="prize-card">
+        <span class="prize-rank rank-2">2</span>
+        <div class="prize-img">
+          <!-- Remplacez par votre image : <img src="lot2.jpg" alt="Demi-journée coaching"> -->
+          <div class="prize-img-placeholder">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="24" cy="18" r="8"/>
+              <path d="M10 40c0-7.73 6.27-14 14-14s14 6.27 14 14"/>
+              <path d="M30 10l4 4-4 4"/>
+            </svg>
+            <span>Visuel du lot · à venir</span>
+          </div>
+        </div>
+        <div class="prize-body">
+          <p class="prize-value">Valeur 150€</p>
+          <h3>½ Journée Coaching</h3>
+          <p>Un accompagnement personnalisé pour booster votre activité, affiner votre positionnement et développer votre clientèle.</p>
+        </div>
+      </div>
+
+      <!-- LOT 3 -->
+      <div class="prize-card">
+        <span class="prize-rank rank-3">3</span>
+        <div class="prize-img">
+          <!-- Remplacez par votre image : <img src="lot3.jpg" alt="5 crèmes corps"> -->
+          <div class="prize-img-placeholder">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M16 8c0-2.2 3.6-4 8-4s8 1.8 8 4v32c0 2.2-3.6 4-8 4s-8-1.8-8-4V8z"/>
+              <ellipse cx="24" cy="8" rx="8" ry="4"/>
+            </svg>
+            <span>Visuel du lot · à venir</span>
+          </div>
+        </div>
+        <div class="prize-body">
+          <p class="prize-value">Valeur 70€</p>
+          <h3>Lot de 5 Crèmes Corps</h3>
+          <p>Cinq crèmes corps Lakshmi à offrir à vos clientes — un geste luxueux pour les fidéliser avec élégance.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ GIFT ═══════════════════════════════ -->
+<section id="gift">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">03</span>
+      <h2>Le Cadeau Garanti</h2>
+      <p class="subtitle">Toutes les participantes repartent gagnantes</p>
+      <div class="gold-rule"><span></span><em>✦</em><span></span></div>
+    </div>
+
+    <div class="gift-inner">
+      <!-- Visual placeholder -->
+      <div class="gift-visual">
+        <!-- Remplacez par votre image : <img src="totebag.jpg" style="width:100%;height:100%;object-fit:cover"> -->
+        <div class="gift-visual-placeholder">
+          <svg viewBox="0 0 56 56" fill="none" stroke="rgba(201,169,110,0.7)" stroke-width="1.5">
+            <path d="M14 20V14a14 14 0 0128 0v6"/>
+            <rect x="8" y="20" width="40" height="30" rx="2"/>
+            <path d="M22 34h12M28 28v12"/>
+          </svg>
+          <span style="display:block;margin-top:10px;font-size:0.7rem;">Tote Bag Lakshmi<br/>· Visuels à venir ·</span>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="gift-content">
+        <h3>Votre Tote Bag Lakshmi</h3>
+        <p>Pour remercier chaque professionnelle de sa fidélité, toutes les commandes participantes incluent un tote bag Lakshmi garni de surprises soigneusement sélectionnées.</p>
+
+        <ul class="gift-items">
+          <li><span class="dot"></span><span>Le tote bag <em>Lakshmi</em> — élégant et réutilisable</span></li>
+          <li><span class="dot"></span><span>Des cadeaux glissés à l'intérieur pour vous faire plaisir</span></li>
+          <li>
+            <span class="dot"></span>
+            <span>
+              Un bon d'achat de <strong style="color:var(--gold);">30€</strong> à utiliser sur votre commande de rentrée en septembre
+            </span>
+          </li>
+        </ul>
+
+        <div class="voucher-badge">
+          <span class="amount">30€</span>
+          <span class="text">Bon d'achat offert<br/>valable en septembre 2026</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ SCRATCH ═══════════════════════════════ -->
+<section id="scratch">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">04</span>
+      <h2>Grattez vos numéros</h2>
+      <p>Passez votre curseur (ou votre doigt) sur les cases dorées pour révéler les numéros disponibles</p>
+      <div class="gold-rule"><span></span><em>✦</em><span></span></div>
+    </div>
+
+    <div class="scratch-legend">
+      <div class="legend-item"><span class="legend-dot legend-available"></span> Disponible — à gratter</div>
+      <div class="legend-item"><span class="legend-dot legend-revealed"></span> Révélé</div>
+      <div class="legend-item"><span class="legend-dot legend-taken"></span> Déjà réservé</div>
+    </div>
+
+    <div class="scratch-grid" id="scratchGrid">
+      <!-- Generé par JS -->
+    </div>
+
+    <p style="text-align:center;margin-top:48px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;color:var(--taupe);">
+      Pour réserver votre numéro, contactez-nous après avoir passé votre commande.<br/>
+      <a href="mailto:alice.rota@lakshmi-france.com" style="color:var(--gold-dark);text-decoration:none;">alice.rota@lakshmi-france.com</a>
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ FOOTER ═══════════════════════════════ -->
+<footer>
+  <p><strong>LAKSHMI</strong> — Cosmétiques Professionnels Naturels</p>
+  <p style="margin-top:6px;">Loterie réservée aux clientes professionnelles · Esthéticiennes & Praticiennes Bien-être</p>
+  <p style="margin-top:6px;">Du 15 juillet au 31 août 2026 · <a href="mailto:alice.rota@lakshmi-france.com">alice.rota@lakshmi-france.com</a></p>
+</footer>
+
+<!-- ═══════════════════════════════ SCRIPTS ═══════════════════════════════ -->
+<script>
+/* ─── Scratch Card Engine ─── */
+
+// Quelques numéros déjà "réservés" pour la démo (à personnaliser)
+const takenNumbers = [7, 13, 21];
+
+function buildScratchGrid() {
+  const grid = document.getElementById('scratchGrid');
+  for (let n = 1; n <= 31; n++) {
+    const isTaken = takenNumbers.includes(n);
+    const wrapper = document.createElement('div');
+    wrapper.className = 'scratch-wrapper' + (isTaken ? ' taken' : '');
+    wrapper.dataset.num = n;
+
+    // Under layer (the number)
+    const under = document.createElement('div');
+    under.className = 'scratch-under';
+    const numEl = document.createElement('span');
+    numEl.className = 'scratch-number';
+    numEl.textContent = n;
+    const star = document.createElement('span');
+    star.className = 'scratch-star';
+    star.textContent = '✦ lakshmi ✦';
+    under.appendChild(numEl);
+    under.appendChild(star);
+    wrapper.appendChild(under);
+
+    if (isTaken) {
+      const overlay = document.createElement('div');
+      overlay.className = 'taken-overlay';
+      overlay.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6L6 18M6 6l12 12"/></svg>Réservé`;
+      wrapper.appendChild(overlay);
+    } else {
+      // Canvas scratch layer
+      const canvas = document.createElement('canvas');
+      canvas.className = 'scratch-canvas';
+      wrapper.appendChild(canvas);
+      new ScratchCard(canvas, wrapper);
+    }
+
+    grid.appendChild(wrapper);
+  }
+}
+
+class ScratchCard {
+  constructor(canvas, wrapper) {
+    this.canvas = canvas;
+    this.wrapper = wrapper;
+    this.ctx = null;
+    this.isDown = false;
+    this.isRevealed = false;
+    this.radius = 18;
+    this.initialized = false;
+
+    // Lazy init on first interaction
+    this.canvas.addEventListener('mousedown', this._onStart.bind(this));
+    this.canvas.addEventListener('touchstart', this._onStart.bind(this), { passive: true });
+  }
+
+  _lazyInit() {
+    if (this.initialized) return;
+    this.initialized = true;
+
+    const w = this.canvas.offsetWidth;
+    const h = this.canvas.offsetHeight;
+    this.canvas.width  = w * window.devicePixelRatio;
+    this.canvas.height = h * window.devicePixelRatio;
+    this.ctx = this.canvas.getContext('2d');
+    this.ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+
+    // Draw golden scratch surface
+    const grd = this.ctx.createLinearGradient(0, 0, w, h);
+    grd.addColorStop(0,   '#C9A96E');
+    grd.addColorStop(0.35,'#E8D5A3');
+    grd.addColorStop(0.65,'#C9A96E');
+    grd.addColorStop(1,   '#9E7A3F');
+    this.ctx.fillStyle = grd;
+    this.ctx.fillRect(0, 0, w, h);
+
+    // Grid texture
+    this.ctx.strokeStyle = 'rgba(255,255,255,0.12)';
+    this.ctx.lineWidth = 0.5;
+    for (let x = 0; x < w; x += 8) {
+      this.ctx.beginPath(); this.ctx.moveTo(x, 0); this.ctx.lineTo(x, h); this.ctx.stroke();
+    }
+    for (let y = 0; y < h; y += 8) {
+      this.ctx.beginPath(); this.ctx.moveTo(0, y); this.ctx.lineTo(w, y); this.ctx.stroke();
+    }
+
+    // Grattez text
+    this.ctx.fillStyle = 'rgba(255,255,255,0.65)';
+    this.ctx.font = `bold ${Math.floor(w * 0.1)}px 'Lato', sans-serif`;
+    this.ctx.textAlign = 'center';
+    this.ctx.textBaseline = 'middle';
+    this.ctx.fillText('GRATTEZ', w / 2, h / 2 - 10);
+    this.ctx.font = `${Math.floor(w * 0.07)}px 'Cormorant Garamond', serif`;
+    this.ctx.fillStyle = 'rgba(255,255,255,0.45)';
+    this.ctx.fillText('✦', w / 2, h / 2 + 14);
+
+    // Events
+    this.canvas.addEventListener('mousemove',  this._onMove.bind(this));
+    this.canvas.addEventListener('mouseup',    this._onEnd.bind(this));
+    this.canvas.addEventListener('mouseleave', this._onEnd.bind(this));
+    this.canvas.addEventListener('touchmove',  this._onMove.bind(this), { passive: false });
+    this.canvas.addEventListener('touchend',   this._onEnd.bind(this));
+  }
+
+  _getPos(e) {
+    const rect = this.canvas.getBoundingClientRect();
+    const src  = e.touches ? e.touches[0] : e;
+    return {
+      x: src.clientX - rect.left,
+      y: src.clientY - rect.top
+    };
+  }
+
+  _onStart(e) {
+    this._lazyInit();
+    if (this.isRevealed) return;
+    this.isDown = true;
+    this._erase(this._getPos(e));
+  }
+
+  _onMove(e) {
+    if (!this.isDown || this.isRevealed) return;
+    if (e.cancelable) e.preventDefault();
+    this._erase(this._getPos(e));
+    this._checkReveal();
+  }
+
+  _onEnd() {
+    this.isDown = false;
+  }
+
+  _erase({ x, y }) {
+    if (!this.ctx) return;
+    this.ctx.globalCompositeOperation = 'destination-out';
+    this.ctx.beginPath();
+    this.ctx.arc(x, y, this.radius, 0, Math.PI * 2);
+    this.ctx.fill();
+    this.ctx.globalCompositeOperation = 'source-over';
+  }
+
+  _checkReveal() {
+    if (!this.ctx) return;
+    const { width: w, height: h } = this.canvas;
+    const pixels = this.ctx.getImageData(0, 0, w, h).data;
+    let transparent = 0;
+    for (let i = 3; i < pixels.length; i += 4) {
+      if (pixels[i] < 128) transparent++;
+    }
+    const total = w * h;
+    if (transparent / total > 0.55) this._reveal();
+  }
+
+  _reveal() {
+    this.isRevealed = true;
+    // Smooth fade out
+    let alpha = 1;
+    const fade = () => {
+      alpha -= 0.06;
+      if (alpha <= 0) {
+        this.canvas.style.display = 'none';
+        // Add green ribbon
+        const ribbon = document.createElement('div');
+        ribbon.className = 'revealed-ribbon';
+        ribbon.textContent = '✦ Révélé ✦';
+        this.wrapper.appendChild(ribbon);
+        return;
+      }
+      this.canvas.style.opacity = alpha;
+      requestAnimationFrame(fade);
+    };
+    requestAnimationFrame(fade);
+  }
+}
+
+// Init on load
+buildScratchGrid();
+
+// Intersection Observer for fade-up animations
+if ('IntersectionObserver' in window) {
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.prize-card, .step-card, .gift-inner').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    obs.observe(el);
+  });
+}
+</script>
+
+</body>
+</html>
