@@ -325,7 +325,7 @@
 
     .prize-img {
       width: 100%;
-      height: 220px;
+      height: 300px;
       background: linear-gradient(135deg, var(--cream-dark) 0%, #EDE4D6 100%);
       display: flex;
       flex-direction: column;
@@ -358,7 +358,7 @@
     .prize-img-dual {
       position: relative;
       width: 100%;
-      height: 220px;
+      height: 300px;
       overflow: hidden;
       background: linear-gradient(135deg, var(--cream-dark) 0%, #EDE4D6 100%);
     }
@@ -438,15 +438,15 @@
 
     .prize-body { padding: 28px 28px 32px; }
     .prize-value {
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gold);
-      font-weight: 700;
-      margin-bottom: 8px;
+      font-size: 1.6rem;
+      font-family: 'TheSeasons', serif;
+      color: var(--gold-dark);
+      font-weight: 400;
+      margin-bottom: 6px;
+      display: block;
     }
     .prize-body h3 {
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       font-weight: 600;
       color: var(--charcoal);
       margin-bottom: 10px;
@@ -456,6 +456,56 @@
       font-weight: 300;
       color: var(--taupe);
       line-height: 1.7;
+    }
+
+    /* ── Pack content toggle ── */
+    .pack-toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 14px;
+      background: none;
+      border: 1px solid rgba(201,169,110,0.5);
+      color: var(--gold-dark);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 7px 16px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .pack-toggle-btn:hover { background: rgba(201,169,110,0.08); border-color: var(--gold); }
+    .pack-toggle-btn svg { width: 12px; height: 12px; transition: transform 0.25s; }
+    .pack-toggle-btn.open svg { transform: rotate(180deg); }
+    .pack-content {
+      display: none;
+      margin-top: 14px;
+      padding: 14px 16px;
+      background: rgba(201,169,110,0.05);
+      border-left: 2px solid var(--gold-light);
+    }
+    .pack-content.open { display: block; }
+    .pack-content ul {
+      list-style: none;
+      padding: 0; margin: 0;
+    }
+    .pack-content ul li {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--taupe);
+      padding: 4px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .pack-content ul li::before {
+      content: '·';
+      color: var(--gold);
+      font-size: 1.2rem;
+      line-height: 1.2;
+      flex-shrink: 0;
     }
 
     /* ─── GUARANTEED GIFT ─── */
@@ -896,9 +946,27 @@
         </div>
 
         <div class="prize-body">
-          <p class="prize-value">Valeur 250€</p>
+          <span class="prize-value">250€</span>
           <h3>Pack Produits Visage <em style="font-weight:300;font-style:italic;color:var(--taupe)">ou</em> Corps</h3>
           <p>Une sélection de produits Lakshmi au choix — visage ou corps — pour enrichir votre gamme et régaler vos clientes.</p>
+          <button class="pack-toggle-btn" onclick="togglePack('pack-visage-list', this)">
+            Voir le contenu du pack visage
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="pack-content" id="pack-visage-list">
+            <ul>
+              <li>— liste des produits à compléter —</li>
+            </ul>
+          </div>
+          <button class="pack-toggle-btn" style="margin-top:8px;" onclick="togglePack('pack-corps-list', this)">
+            Voir le contenu du pack corps
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="pack-content" id="pack-corps-list">
+            <ul>
+              <li>— liste des produits à compléter —</li>
+            </ul>
+          </div>
         </div>
       </div>
       </div>
@@ -911,7 +979,7 @@
           <img src="coaching.png" alt="½ Journée Coaching en visio" style="width:100%;height:100%;object-fit:cover;object-position:center top;" />
         </div>
         <div class="prize-body">
-          <p class="prize-value">Valeur 150€</p>
+          <span class="prize-value">150€</span>
           <h3>½ Journée Coaching</h3>
           <p>Un accompagnement personnalisé pour booster votre activité, affiner votre positionnement et développer votre clientèle.</p>
         </div>
@@ -933,7 +1001,7 @@
           </div>
         </div>
         <div class="prize-body">
-          <p class="prize-value">Valeur 70€</p>
+          <span class="prize-value">70€</span>
           <h3>Lot de 5 Crèmes Corps</h3>
           <p>Cinq crèmes corps Lakshmi à offrir à vos clientes — un geste luxueux pour les fidéliser avec élégance.</p>
         </div>
@@ -1292,6 +1360,12 @@ function goToPanel(idx) {
 }
 
 function toggleDual() { goToPanel(dualCurrent === 0 ? 1 : 0); }
+
+function togglePack(id, btn) {
+  const el = document.getElementById(id);
+  const isOpen = el.classList.toggle('open');
+  btn.classList.toggle('open', isOpen);
+}
 
 // Init on load
 buildScratchGrid();
