@@ -290,23 +290,25 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 32px;
-      align-items: start;
+      align-items: stretch;
     }
 
     .prize-card-wrap {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0;
     }
 
     .prize-card {
       width: 100%;
+      flex: 1;
       background: var(--cream);
       border: 1px solid rgba(201,169,110,0.2);
       overflow: hidden;
       transition: all 0.35s ease;
       position: relative;
+      display: flex;
+      flex-direction: column;
     }
     .prize-card:hover { transform: translateY(-8px); box-shadow: 0 16px 50px rgba(0,0,0,0.09); }
 
@@ -436,7 +438,7 @@
     }
     .dual-dot.active { background: var(--gold); }
 
-    .prize-body { padding: 28px 28px 32px; }
+    .prize-body { padding: 28px 28px 32px; display: flex; flex-direction: column; flex: 1; }
     .prize-value {
       font-size: 1.6rem;
       font-family: 'TheSeasons', serif;
@@ -982,6 +984,15 @@
           <span class="prize-value">150€</span>
           <h3>½ Journée Coaching</h3>
           <p>Un accompagnement personnalisé pour booster votre activité, affiner votre positionnement et développer votre clientèle.</p>
+          <button class="pack-toggle-btn" onclick="togglePack('coaching-detail', this)">
+            En savoir plus
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="pack-content" id="coaching-detail">
+            <ul>
+              <li>— description du coaching à compléter —</li>
+            </ul>
+          </div>
         </div>
       </div>
       </div>
@@ -997,6 +1008,15 @@
           <span class="prize-value">70€</span>
           <h3>Lot de 5 Crèmes Corps</h3>
           <p>Cinq crèmes corps Lakshmi à offrir à vos clientes — un geste luxueux pour les fidéliser avec élégance.</p>
+          <button class="pack-toggle-btn" onclick="togglePack('cremes-detail', this)">
+            En savoir plus
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="pack-content" id="cremes-detail">
+            <ul>
+              <li>— description des crèmes à compléter —</li>
+            </ul>
+          </div>
         </div>
       </div>
       </div>
