@@ -835,6 +835,77 @@
       transition: color 0.2s;
     }
     .modal-close:hover { color: var(--charcoal); }
+    /* ── Modal steps ── */
+    .modal-step { display: none; }
+    .modal-step.active { display: block; }
+
+    .modal-choice-btns {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 28px;
+    }
+    .modal-btn-choice {
+      width: 100%;
+      padding: 14px 20px;
+      border: 1px solid rgba(201,169,110,0.4);
+      background: rgba(201,169,110,0.05);
+      color: var(--charcoal);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+    }
+    .modal-btn-choice:hover { background: rgba(201,169,110,0.12); border-color: var(--gold); }
+    .modal-btn-choice.primary {
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+      border-color: transparent;
+      color: white;
+    }
+    .modal-btn-choice.primary:hover { opacity: 0.9; }
+
+    .modal-code-wrap {
+      margin-top: 24px;
+      text-align: left;
+    }
+    .modal-code-wrap label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--taupe);
+      margin-bottom: 8px;
+    }
+    .modal-code-input {
+      width: 100%;
+      padding: 13px 16px;
+      border: 1px solid rgba(201,169,110,0.4);
+      background: white;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .modal-code-input:focus { border-color: var(--gold); }
+    .modal-code-error {
+      display: none;
+      margin-top: 8px;
+      font-size: 0.8rem;
+      color: #c0392b;
+    }
+    .modal-code-error.show { display: block; }
+    .modal-success-icon {
+      font-size: 2.5rem;
+      margin-bottom: 12px;
+    }
+
     .modal-btn-close {
       display: inline-block;
       background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
@@ -1336,10 +1407,55 @@ class ScratchCard {
 }
 
 // ── Modal contact ──
+// Codes de participation valides (60 codes générés pour Nicole)
+const VALID_CODES = [
+  'LK-28XW','LK-2PQL','LK-2UHV','LK-37KP','LK-3SGA','LK-3SR6','LK-3TZ2',
+  'LK-45H8','LK-5X8M','LK-6DVR','LK-6ES3','LK-6WP3','LK-74L7','LK-7BT4',
+  'LK-7RSA','LK-8RZE','LK-8U3E','LK-9739','LK-AAU7','LK-C3HV','LK-D4Q4',
+  'LK-D6BM','LK-DHVT','LK-DJ8F','LK-DS2V','LK-DSS5','LK-DY3S','LK-DYTU',
+  'LK-DZPQ','LK-ELU2','LK-FTUT','LK-GKJT','LK-HEBY','LK-HU86','LK-KMJR',
+  'LK-KQ6Y','LK-LKLD','LK-M2AS','LK-NPPC','LK-PKJB','LK-PNUR','LK-Q2GY',
+  'LK-Q884','LK-QR79','LK-R7JP','LK-R7JR','LK-RCJR','LK-RD33','LK-RH6W',
+  'LK-S43T','LK-S8F5','LK-SCLT','LK-SCX7','LK-SPLV','LK-TTXK','LK-UAYM',
+  'LK-WVQS','LK-X2ZF','LK-XCNG','LK-XXGJ'
+];
+
+let currentModalNum = null;
+
 function openScratchModal(num) {
+  currentModalNum = num;
   document.getElementById('modal-number').textContent = num;
+  document.getElementById('modal-num-inline').textContent = num;
   document.getElementById('scratch-modal').classList.add('open');
   document.body.style.overflow = 'hidden';
+  showModalStep(1);
+  document.getElementById('code-input').value = '';
+  document.getElementById('code-error').classList.remove('show');
+}
+
+function showModalStep(n) {
+  document.querySelectorAll('.modal-step').forEach(s => s.classList.remove('active'));
+  document.getElementById('modal-step-' + n).classList.add('active');
+  if (n === 2) document.getElementById('code-input').focus();
+}
+
+function validateCode() {
+  const input = document.getElementById('code-input').value.trim().toUpperCase();
+  const errorEl = document.getElementById('code-error');
+  const usedCodes = JSON.parse(localStorage.getItem('lk_used_codes') || '[]');
+
+  if (!VALID_CODES.includes(input) || usedCodes.includes(input)) {
+    errorEl.classList.add('show');
+    return;
+  }
+  errorEl.classList.remove('show');
+  usedCodes.push(input);
+  localStorage.setItem('lk_used_codes', JSON.stringify(usedCodes));
+  const reserved = JSON.parse(localStorage.getItem('lk_reserved') || '{}');
+  reserved[currentModalNum] = input;
+  localStorage.setItem('lk_reserved', JSON.stringify(reserved));
+  document.getElementById('modal-num-success').textContent = currentModalNum;
+  showModalStep(4);
 }
 
 function closeModal(e) {
@@ -1348,8 +1464,10 @@ function closeModal(e) {
   document.body.style.overflow = '';
 }
 
-// Fermer avec Echap
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('code-input').addEventListener('keydown', e => { if (e.key === 'Enter') validateCode(); });
+});
 
 // ── Double pack toggle ──
 let dualCurrent = 0;
@@ -1412,25 +1530,55 @@ if ('IntersectionObserver' in window) {
     <div class="modal-number" id="modal-number">7</div>
     <div class="modal-number-label">Votre numéro</div>
 
-    <p class="modal-title">Félicitations, vous avez gratté votre numéro !</p>
-
-    <p class="modal-text">
-      Pour finaliser votre commande et réserver ce numéro,<br/>
-      contactez Nicole :
-    </p>
-
-    <div class="modal-contacts">
-      <a href="tel:0672566422" class="modal-contact-item">
-        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.7A2 2 0 012 0h3a2 2 0 012 1.72c.13 1 .36 1.98.72 2.92a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.16-1.16a2 2 0 012.11-.45c.94.36 1.93.59 2.92.72A2 2 0 0122 16.92z"/></svg>
-        06 72 56 64 22
-      </a>
-      <a href="mailto:nicole.rota@lakshmi-france.com" class="modal-contact-item">
-        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        nicole.rota@lakshmi-france.com
-      </a>
+    <!-- ÉTAPE 1 : question initiale -->
+    <div class="modal-step active" id="modal-step-1">
+      <p class="modal-title">Félicitations, vous avez gratté votre numéro !</p>
+      <p class="modal-text">Avez-vous un code de participation reçu après votre commande ?</p>
+      <div class="modal-choice-btns">
+        <button class="modal-btn-choice primary" onclick="showModalStep(2)">Oui, j'ai mon code</button>
+        <button class="modal-btn-choice" onclick="showModalStep(3)">Je n'ai pas encore de code</button>
+      </div>
     </div>
 
-    <button class="modal-btn-close" onclick="closeModal()">J'ai compris</button>
+    <!-- ÉTAPE 2 : saisie du code -->
+    <div class="modal-step" id="modal-step-2">
+      <p class="modal-title">Réservez votre numéro</p>
+      <p class="modal-text">Entrez le code reçu lors de votre commande pour valider votre numéro <strong id="modal-num-inline"></strong>.</p>
+      <div class="modal-code-wrap">
+        <label for="code-input">Votre code</label>
+        <input type="text" id="code-input" class="modal-code-input" placeholder="LK-XXXX" maxlength="7" oninput="this.value=this.value.toUpperCase()" />
+        <p class="modal-code-error" id="code-error">Code invalide ou déjà utilisé. Vérifiez votre code ou contactez Nicole.</p>
+      </div>
+      <div class="modal-choice-btns">
+        <button class="modal-btn-choice primary" onclick="validateCode()">Réserver mon numéro</button>
+        <button class="modal-btn-choice" onclick="showModalStep(1)">← Retour</button>
+      </div>
+    </div>
+
+    <!-- ÉTAPE 3 : pas de code → contact Nicole -->
+    <div class="modal-step" id="modal-step-3">
+      <p class="modal-title">Passez votre commande pour participer</p>
+      <p class="modal-text">Après votre commande, Nicole vous communiquera un code personnel pour réserver ce numéro.</p>
+      <div class="modal-contacts">
+        <a href="tel:0672566422" class="modal-contact-item">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.7A2 2 0 012 0h3a2 2 0 012 1.72c.13 1 .36 1.98.72 2.92a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.16-1.16a2 2 0 012.11-.45c.94.36 1.93.59 2.92.72A2 2 0 0122 16.92z"/></svg>
+          06 72 56 64 22
+        </a>
+        <a href="mailto:nicole.rota@lakshmi-france.com" class="modal-contact-item">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          nicole.rota@lakshmi-france.com
+        </a>
+      </div>
+      <button class="modal-btn-close" onclick="closeModal()">J'ai compris</button>
+    </div>
+
+    <!-- ÉTAPE 4 : succès -->
+    <div class="modal-step" id="modal-step-4">
+      <div class="modal-success-icon">✦</div>
+      <p class="modal-title">Numéro réservé !</p>
+      <p class="modal-text">Votre numéro <strong id="modal-num-success"></strong> est bien enregistré.<br/>Bonne chance pour le tirage du 17 août !</p>
+      <button class="modal-btn-close" onclick="closeModal()">Fermer</button>
+    </div>
   </div>
 </div>
 
