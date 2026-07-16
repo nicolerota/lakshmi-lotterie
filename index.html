@@ -94,6 +94,16 @@
     }
 
     /* ─── HERO ─── */
+    #confetti-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    #hero > *:not(#confetti-canvas) { position: relative; z-index: 1; }
+
     #hero {
       min-height: 100vh;
       display: flex;
@@ -951,6 +961,7 @@
 
 <!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
 <section id="hero">
+  <canvas id="confetti-canvas"></canvas>
   <div id="site-logo">
     <img src="logo.svg" alt="Lakshmi" />
   </div>
@@ -1498,6 +1509,93 @@ function togglePack(id, btn) {
   const isOpen = el.classList.toggle('open');
   btn.classList.toggle('open', isOpen);
 }
+
+// ── Confetti animation ──
+(function() {
+  const canvas = document.getElementById('confetti-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  const COLORS = ['#C9A96E','#E8D5A3','#9E7A3F','#D4B896','#F0E6D0','#B8975A'];
+  const SHAPES = ['rect','circle','ribbon'];
+  const N = 55;
+  let W, H, particles = [];
+
+  function resize() {
+    W = canvas.width  = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+  }
+
+  function rand(a, b) { return a + Math.random() * (b - a); }
+
+  function makeParticle() {
+    const side = Math.random() < 0.5 ? 'left' : 'right';
+    return {
+      x: side === 'left' ? rand(0, W * 0.22) : rand(W * 0.78, W),
+      y: rand(-60, H * 0.3),
+      r: rand(3, 7),
+      w: rand(5, 11),
+      h: rand(3, 7),
+      shape: SHAPES[Math.floor(Math.random() * SHAPES.length)],
+      color: COLORS[Math.floor(Math.random() * COLORS.length)],
+      alpha: rand(0.35, 0.75),
+      vx: rand(-0.5, 0.5),
+      vy: rand(0.4, 1.1),
+      rot: rand(0, Math.PI * 2),
+      vrot: rand(-0.03, 0.03),
+      swing: rand(0.3, 0.8),
+      swingSpeed: rand(0.01, 0.025),
+      t: rand(0, Math.PI * 2),
+    };
+  }
+
+  function init() {
+    resize();
+    particles = Array.from({length: N}, makeParticle);
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    for (const p of particles) {
+      ctx.save();
+      ctx.globalAlpha = p.alpha;
+      ctx.fillStyle = p.color;
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rot);
+      if (p.shape === 'circle') {
+        ctx.beginPath();
+        ctx.arc(0, 0, p.r, 0, Math.PI * 2);
+        ctx.fill();
+      } else if (p.shape === 'ribbon') {
+        ctx.beginPath();
+        ctx.ellipse(0, 0, p.w, p.h * 0.4, 0, 0, Math.PI * 2);
+        ctx.fill();
+      } else {
+        ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+      }
+      ctx.restore();
+    }
+  }
+
+  function update() {
+    for (const p of particles) {
+      p.t += p.swingSpeed;
+      p.x += p.vx + Math.sin(p.t) * p.swing;
+      p.y += p.vy;
+      p.rot += p.vrot;
+      if (p.y > H + 20) {
+        Object.assign(p, makeParticle());
+        p.y = -10;
+      }
+    }
+  }
+
+  function loop() { update(); draw(); requestAnimationFrame(loop); }
+
+  window.addEventListener('resize', resize);
+  init();
+  loop();
+})();
 
 // Init on load
 buildScratchGrid();
