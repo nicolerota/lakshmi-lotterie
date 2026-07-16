@@ -1142,7 +1142,7 @@
         <div class="step-nums">
           <span class="num-chip">1</span>
         </div>
-        <p class="step-reward" style="margin-top:16px;">Choisissez <strong>1 numéro</strong><br/>parmi les 31 disponibles</p>
+        <p class="step-reward" style="margin-top:16px;">Choisissez <strong>1 numéro</strong><br/>parmi les 30 disponibles</p>
       </div>
 
       <!-- 600 -->
@@ -1153,7 +1153,7 @@
           <span class="num-chip">1</span>
           <span class="num-chip">2</span>
         </div>
-        <p class="step-reward" style="margin-top:16px;">Choisissez <strong>2 numéros</strong><br/>parmi les 31 disponibles</p>
+        <p class="step-reward" style="margin-top:16px;">Choisissez <strong>2 numéros</strong><br/>parmi les 30 disponibles</p>
       </div>
 
       <!-- 900 -->
@@ -1165,7 +1165,7 @@
           <span class="num-chip">2</span>
           <span class="num-chip">3</span>
         </div>
-        <p class="step-reward" style="margin-top:16px;">Choisissez <strong>3 numéros</strong><br/>parmi les 31 disponibles</p>
+        <p class="step-reward" style="margin-top:16px;">Choisissez <strong>3 numéros</strong><br/>parmi les 30 disponibles</p>
       </div>
     </div>
 
@@ -1247,7 +1247,7 @@ const takenNumbers = [7, 13, 21];
 
 function buildScratchGrid() {
   const grid = document.getElementById('scratchGrid');
-  for (let n = 1; n <= 31; n++) {
+  for (let n = 1; n <= 30; n++) {
     const isTaken = takenNumbers.includes(n);
     const wrapper = document.createElement('div');
     wrapper.className = 'scratch-wrapper' + (isTaken ? ' taken' : '');
