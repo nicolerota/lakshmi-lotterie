@@ -533,7 +533,8 @@
       color: var(--charcoal);
       text-align: center;
     }
-    .gift-content { text-align: left; }
+    .gift-content { text-align: left; display: flex; flex-direction: column; }
+    .gift-content .voucher-badge { align-self: center; }
     #gift .section-number { color: rgba(201,169,110,0.15); }
     #gift h2 { color: var(--charcoal); }
     #gift .subtitle { color: var(--taupe); }
@@ -615,6 +616,7 @@
       border: 1px solid var(--gold);
       padding: 14px 24px;
       margin-top: 20px;
+      align-self: center;
       background: rgba(201,169,110,0.08);
     }
     .voucher-badge .amount {
