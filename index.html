@@ -3,7 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Loterie d'Été Lakshmi — Juillet · Août 2026</title>
+  <title>Loterie d'Été Lakshmi, Juillet · Août 2026</title>
+  <meta property="og:title" content="Grande loterie d'été Lakshmi" />
+  <meta property="og:description" content="Réservé aux professionnelles, 3 lots à gagner, tirage le 17 août 2026." />
+  <meta property="og:image" content="https://lakshmi-lotterie.vercel.app/og-image.jpg" />
+  <meta property="og:url" content="https://lakshmi-lotterie.vercel.app" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://lakshmi-lotterie.vercel.app/og-image.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400;1,9..40,500;1,9..40,700&display=swap" rel="stylesheet" />
@@ -187,7 +194,7 @@
     }
 
     /* ─── SECTION BASE ─── */
-    section { padding: 90px 48px; }
+    section { padding: 60px 48px; }
     .container { max-width: 1100px; margin: 0 auto; }
     .section-header { text-align: center; margin-bottom: 60px; }
     .section-header h2 { font-family: 'TheSeasons', serif; font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 400; letter-spacing: 0.01em; color: var(--charcoal); margin-bottom: 8px; }
@@ -275,23 +282,27 @@
     }
 
     .priority-note {
-      text-align: center;
+      text-align: left;
       margin-top: 48px;
-      padding: 24px 32px;
-      background: transparent;
-      border: 1px solid rgba(201,169,110,0.3);
+      padding: 20px 28px;
+      background: rgba(201,169,110,0.08);
+      border-left: 3px solid var(--gold);
       max-width: 680px;
       margin-left: auto;
       margin-right: auto;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
     }
     .priority-note p {
       font-family: 'DM Sans', sans-serif;
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 300;
       font-style: italic;
       color: var(--taupe);
+      line-height: 1.7;
     }
-    .priority-note strong { color: var(--gold-dark); font-style: normal; font-weight: 700; }
+    .priority-note strong { color: var(--gold-dark); font-style: normal; font-weight: 600; }
 
     /* ─── PRIZES ─── */
     #prizes { background: var(--cream); }
@@ -312,7 +323,7 @@
     .prize-card {
       width: 100%;
       flex: 1;
-      background: var(--cream);
+      background: rgba(201,169,110,0.08);
       border: 1px solid rgba(201,169,110,0.2);
       overflow: hidden;
       transition: all 0.35s ease;
@@ -346,12 +357,7 @@
       position: relative;
       overflow: hidden;
     }
-    .prize-img::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, transparent 60%, rgba(255,255,255,0.5));
-    }
+    .prize-img::after { display: none; }
     .prize-img-placeholder {
       text-align: center;
       color: rgba(201,169,110,0.6);
@@ -374,14 +380,7 @@
       overflow: hidden;
       background: linear-gradient(135deg, var(--cream-dark) 0%, #EDE4D6 100%);
     }
-    .prize-img-dual::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, transparent 60%, rgba(255,255,255,0.5));
-      pointer-events: none;
-      z-index: 1;
-    }
+    .prize-img-dual::after { display: none; }
     .dual-slide {
       display: flex;
       width: 200%;
@@ -534,7 +533,7 @@
       text-align: center;
     }
     .gift-content { text-align: left; display: flex; flex-direction: column; }
-    .gift-content .voucher-badge { align-self: center; }
+    .gift-content .voucher-badge { align-self: stretch; }
     #gift .section-number { color: rgba(201,169,110,0.15); }
     #gift h2 { color: var(--charcoal); }
     #gift .subtitle { color: var(--taupe); }
@@ -610,29 +609,29 @@
     }
 
     .voucher-badge {
-      display: inline-flex;
+      display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 24px;
       border: 1px solid var(--gold);
-      padding: 14px 24px;
+      padding: 18px 28px;
       margin-top: 28px;
-      align-self: center;
-      width: 70%;
-      justify-content: center;
+      width: 100%;
       background: rgba(201,169,110,0.08);
+      box-sizing: border-box;
     }
     .voucher-badge .amount {
       font-family: 'DM Sans', sans-serif;
-      font-size: 2rem;
+      font-size: 3.2rem;
       font-weight: 700;
       color: var(--gold);
+      flex-shrink: 0;
     }
     .voucher-badge .text {
-      font-size: 1.15rem;
-      letter-spacing: 0.08em;
+      font-size: 1rem;
+      letter-spacing: 0.06em;
       color: var(--taupe);
       text-align: left;
-      line-height: 1.4;
+      line-height: 1.5;
     }
 
     /* ─── SCRATCH CARDS ─── */
@@ -641,11 +640,6 @@
       padding-bottom: 100px;
     }
     #scratch .section-header p {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 1rem;
-      font-weight: 300;
-      font-style: italic;
-      color: var(--taupe);
       margin-top: 12px;
     }
 
@@ -683,9 +677,9 @@
       position: relative;
       width: 100%;
       aspect-ratio: 1;
-      border-radius: 4px;
+      border-radius: 50%;
       overflow: hidden;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.10);
       cursor: crosshair;
       transition: transform 0.2s;
     }
@@ -707,7 +701,7 @@
       font-family: 'DM Sans', sans-serif;
       font-size: 2.4rem;
       font-weight: 700;
-      color: var(--charcoal);
+      color: var(--gold);
       line-height: 1;
     }
 
@@ -752,11 +746,28 @@
     @media (max-width: 900px) {
       nav { padding: 16px 24px; }
       .nav-links { display: none; }
-      section { padding: 70px 24px; }
-      .steps-grid { grid-template-columns: 1fr; gap: 24px; }
-      .prizes-grid { grid-template-columns: 1fr; }
+      section { padding: 50px 24px; }
+      #hero h1 { font-size: 3.2rem; }
+      #site-logo img { height: 40px; }
+      .section-header h2 { font-size: 2rem; }
+      .section-header .subtitle { font-size: 0.88rem; }
+      .hero-dates { font-size: 0.95rem; }
+      .hero-desc { font-size: 0.9rem; }
+      .steps-grid { grid-template-columns: 1fr; gap: 12px; }
+      .step-card { padding: 20px 24px; }
+      .step-amount { font-size: 1.8rem; }
+      .step-label { margin-bottom: 12px; }
+      .step-nums { margin-top: 10px; }
+      .prizes-grid { grid-template-columns: 1fr; gap: 36px; }
+      .prize-img, .prize-img-dual { height: 200px !important; }
+      .prize-body { padding: 16px 20px 20px; }
+      .prize-body h3 { font-size: 1.1rem; }
+      .prize-body p { font-size: 0.9rem; }
+      .prize-rank { width: 36px; height: 36px; font-size: 0.95rem; margin-bottom: 20px; }
+      .prize-value { font-size: 1.2rem !important; padding: 28px 0 0 !important; }
       .gift-inner { grid-template-columns: 1fr; gap: 40px; }
-      .gift-visual { height: 220px; }
+      .gift-visual { height: auto; overflow: visible; }
+      .gift-visual img { object-fit: contain !important; height: auto !important; position: relative; }
       .scratch-grid { grid-template-columns: repeat(auto-fill, minmax(85px, 1fr)); gap: 12px; }
       .scratch-number { font-size: 1.9rem; }
     }
@@ -990,11 +1001,11 @@
   </div>
 
   <p class="hero-desc fade-up delay-3">
-    Passez une commande, choisissez vos numéros et grattez.<br/>
-    Vous avez 1 mois pour jouer. À partir du 17 août, nous tirons au sort 3 numéros parmi toutes les participantes pour attribuer les 3 lots. Et bonne nouvelle — chaque participante repart avec un cadeau garanti.
+    Passez une commande, choisissez vos numéros et grattez.<br/><br/>
+    Vous avez 1 mois pour jouer. À partir du 17 août, nous tirons au sort 3 numéros parmi toutes les participantes pour attribuer les 3 lots.<br/><br/>Et bonne nouvelle, chaque participante repart avec un cadeau garanti.
   </p>
 
-  <a href="#scratch" class="btn-primary fade-up delay-4">Gratter mes numéros préférés</a>
+  <a href="#scratch" class="btn-primary fade-up delay-4" onclick="event.preventDefault();document.getElementById('scratch').scrollIntoView({behavior:'smooth'})">Gratter mes numéros préférés</a>
 </section>
 
 <!-- ═══════════════════════════════ PRIZES ═══════════════════════════════ -->
@@ -1003,7 +1014,7 @@
     <div class="section-header">
       <span class="section-number">01</span>
       <h2>Les lots à gagner</h2>
-      <p class="subtitle">Trois lots d'exception à remporter — jusqu'au 17 août seulement</p>
+      <p class="subtitle">Trois lots d'exception à remporter</p>
       <div class="gold-rule"><span></span><em>✦</em><span></span></div>
     </div>
 
@@ -1012,7 +1023,6 @@
       <!-- LOT 1 -->
       <div class="prize-card-wrap">
         <span class="prize-rank rank-1">1</span>
-        <span class="prize-value">Valeur 250€</span>
       <div class="prize-card">
 
         <div class="prize-img-dual" id="dualPack">
@@ -1041,7 +1051,6 @@
             <span class="dual-dot"        id="dot1" onclick="goToPanel(1)"></span>
           </div>
         </div>
-
         <div class="prize-body">
           <h3>Pack Produits Visage <em style="font-weight:300;font-style:italic;color:var(--taupe)">ou</em> Corps</h3>
           <p>Une sélection de produits Lakshmi au choix (visage ou corps) pour enrichir votre gamme et faire plaisir à vos clientes.</p>
@@ -1073,6 +1082,7 @@
               <li>2 crèmes crio jambes lourdes</li>
             </ul>
           </div>
+          <span class="prize-value" style="display:block;text-align:center;padding:16px 0 0;margin-top:auto;">Valeur 250€</span>
         </div>
       </div>
       </div>
@@ -1080,7 +1090,6 @@
       <!-- LOT 2 -->
       <div class="prize-card-wrap">
         <span class="prize-rank rank-2">2</span>
-        <span class="prize-value">Valeur 150€</span>
       <div class="prize-card">
         <div class="prize-img">
           <img src="coaching.png" alt="½ Journée Coaching en visio" style="width:100%;height:100%;object-fit:cover;object-position:center top;" />
@@ -1095,6 +1104,7 @@
           <div class="pack-content" id="coaching-detail">
             <p style="font-size:0.85rem;font-weight:300;color:var(--taupe);line-height:1.8;">Un temps privilégié pour prendre du recul sur votre activité. Ensemble, nous analyserons votre institut, vos objectifs et vos défis afin de construire un plan d'action concret. Communication, fidélisation, développement commercial, animations, rentabilité… Repartez avec des idées applicables immédiatement pour faire évoluer votre activité.</p>
           </div>
+          <span class="prize-value" style="display:block;text-align:center;padding:16px 0 0;margin-top:auto;">Valeur 150€</span>
         </div>
       </div>
       </div>
@@ -1102,14 +1112,13 @@
       <!-- LOT 3 -->
       <div class="prize-card-wrap">
         <span class="prize-rank rank-3">3</span>
-        <span class="prize-value">Valeur 70€</span>
       <div class="prize-card">
         <div class="prize-img">
           <img src="lot3-cremes.png" alt="5 crèmes corps Gaia Lakshmi" style="width:100%;height:100%;object-fit:cover;object-position:center;" />
         </div>
         <div class="prize-body">
           <h3>Lot de 5 Crèmes Corps</h3>
-          <p>Cinq crèmes corps Lakshmi à offrir à vos clientes — un geste luxueux pour les fidéliser avec élégance.</p>
+          <p>Cinq crèmes corps Lakshmi à offrir à vos clientes, un geste luxueux pour les fidéliser avec élégance.</p>
           <button class="pack-toggle-btn" onclick="togglePack('cremes-detail', this)">
             En savoir plus
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
@@ -1117,6 +1126,7 @@
           <div class="pack-content" id="cremes-detail">
             <p style="font-size:0.85rem;font-weight:300;color:var(--taupe);line-height:1.8;">Chaque année, Lakshmi crée une édition limitée très attendue : la Crème Corps Gaia. Plus qu'un soin, c'est une véritable expérience sensorielle inspirée de l'aromathérapie, conçue pour nourrir la peau, apaiser l'esprit et créer un moment de bien-être. Offrez ces 5 crèmes à vos meilleures clientes pour les remercier et renforcer leur fidélité envers votre institut.</p>
           </div>
+          <span class="prize-value" style="display:block;text-align:center;padding:16px 0 0;margin-top:auto;">Valeur 70€</span>
         </div>
       </div>
       </div>
@@ -1198,7 +1208,7 @@
         <p>Pour remercier chaque professionnelle de sa fidélité, toutes les commandes participant à la loterie gagneront un tote bag Lakshmi garni de surprises soigneusement sélectionnées.</p>
 
         <ul class="gift-items">
-          <li><span class="dot"></span><span>Le tote bag <em>Lakshmi</em> — élégant et réutilisable</span></li>
+          <li><span class="dot"></span><span>Le tote bag <em>Lakshmi</em>, élégant et réutilisable</span></li>
           <li><span class="dot"></span><span>Des cadeaux glissés à l'intérieur pour vous faire plaisir</span></li>
           <li>
             <span class="dot"></span>
@@ -1223,12 +1233,12 @@
     <div class="section-header">
       <span class="section-number">04</span>
       <h2>Grattez vos numéros</h2>
-      <p>Passez votre curseur (ou votre doigt) sur les cases dorées pour révéler les numéros disponibles</p>
+      <p class="subtitle">Passez votre curseur (ou votre doigt) sur les cases dorées pour révéler les numéros disponibles</p>
       <div class="gold-rule"><span></span><em>✦</em><span></span></div>
     </div>
 
     <div class="scratch-legend">
-      <div class="legend-item"><span class="legend-dot legend-available"></span> Disponible — à gratter</div>
+      <div class="legend-item"><span class="legend-dot legend-available"></span> Disponible, à gratter</div>
       <div class="legend-item"><span class="legend-dot legend-taken"></span> Déjà réservé</div>
     </div>
 
@@ -1242,13 +1252,35 @@
 <script>
 /* ─── Scratch Card Engine ─── */
 
-// Quelques numéros déjà "réservés" pour la démo (à personnaliser)
-const takenNumbers = [];
+// Numéros pris via URL ?pris=5,12,23 (Nicole met à jour le lien partagé)
+const urlParams = new URLSearchParams(location.search);
+const takenNumbers = [1, 3, 4, 7, 10, 15, 19, 22];
+
+function getReservedNumbers() {
+  // Réservations locales (appareil de la cliente)
+  const reserved = JSON.parse(localStorage.getItem('lk_reserved') || '{}');
+  return Object.keys(reserved).map(Number);
+}
+
+function markNumberTaken(num) {
+  const wrapper = document.querySelector(`.scratch-wrapper[data-num="${num}"]`);
+  if (!wrapper || wrapper.classList.contains('taken')) return;
+  wrapper.classList.add('taken');
+  // Remplacer le canvas par l'overlay "réservé"
+  const canvas = wrapper.querySelector('canvas');
+  if (canvas) canvas.remove();
+  const overlay = document.createElement('div');
+  overlay.className = 'taken-overlay';
+  overlay.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6L6 18M6 6l12 12"/></svg>Réservé`;
+  wrapper.appendChild(overlay);
+}
 
 function buildScratchGrid() {
   const grid = document.getElementById('scratchGrid');
+  const reservedNums = getReservedNumbers();
+  const allTaken = [...new Set([...takenNumbers, ...reservedNums])];
   for (let n = 1; n <= 30; n++) {
-    const isTaken = takenNumbers.includes(n);
+    const isTaken = allTaken.includes(n);
     const wrapper = document.createElement('div');
     wrapper.className = 'scratch-wrapper' + (isTaken ? ' taken' : '');
     wrapper.dataset.num = n;
@@ -1288,11 +1320,14 @@ class ScratchCard {
     this.isRevealed = false;
     this.lastPos = null;
     this.moveCount = 0;
-    this.radius = 26;
+    this.radius = 22;
     this.initialized = false;
 
     this.canvas.addEventListener('mousedown', this._onStart.bind(this));
     this.canvas.addEventListener('touchstart', this._onStart.bind(this), { passive: true });
+
+    // Peindre la surface dorée immédiatement (pas en lazy)
+    requestAnimationFrame(() => this._lazyInit());
   }
 
   _lazyInit() {
@@ -1306,34 +1341,35 @@ class ScratchCard {
     this.ctx = this.canvas.getContext('2d');
     this.ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
 
-    // Golden surface
+    // Dégradé doré métallique (sans traits)
     const grd = this.ctx.createLinearGradient(0, 0, w, h);
-    grd.addColorStop(0,   '#C9A96E');
-    grd.addColorStop(0.35,'#E8D5A3');
-    grd.addColorStop(0.65,'#C9A96E');
-    grd.addColorStop(1,   '#9E7A3F');
+    grd.addColorStop(0,    '#A8742E');
+    grd.addColorStop(0.2,  '#E2C87A');
+    grd.addColorStop(0.45, '#C9A96E');
+    grd.addColorStop(0.65, '#EDD898');
+    grd.addColorStop(0.85, '#C9A96E');
+    grd.addColorStop(1,    '#8A6128');
     this.ctx.fillStyle = grd;
     this.ctx.fillRect(0, 0, w, h);
 
-    // Grid texture
-    this.ctx.strokeStyle = 'rgba(255,255,255,0.12)';
-    this.ctx.lineWidth = 0.5;
-    for (let x = 0; x < w; x += 8) {
-      this.ctx.beginPath(); this.ctx.moveTo(x, 0); this.ctx.lineTo(x, h); this.ctx.stroke();
-    }
-    for (let y = 0; y < h; y += 8) {
-      this.ctx.beginPath(); this.ctx.moveTo(0, y); this.ctx.lineTo(w, y); this.ctx.stroke();
-    }
+    // Reflet lumineux horizontal au centre (effet métal poli)
+    const shine = this.ctx.createLinearGradient(0, h * 0.3, 0, h * 0.6);
+    shine.addColorStop(0,   'rgba(255,255,255,0)');
+    shine.addColorStop(0.5, 'rgba(255,255,255,0.18)');
+    shine.addColorStop(1,   'rgba(255,255,255,0)');
+    this.ctx.fillStyle = shine;
+    this.ctx.fillRect(0, 0, w, h);
 
-    // Label
-    this.ctx.fillStyle = 'rgba(255,255,255,0.65)';
-    this.ctx.font = `bold ${Math.floor(w * 0.1)}px 'DM Sans', sans-serif`;
+    // Numéro en blanc sur la surface dorée
+    const num = this.wrapper.dataset.num;
     this.ctx.textAlign = 'center';
     this.ctx.textBaseline = 'middle';
-    this.ctx.fillText('GRATTEZ', w / 2, h / 2 - 10);
-    this.ctx.font = `${Math.floor(w * 0.07)}px 'DM Sans', sans-serif`;
-    this.ctx.fillStyle = 'rgba(255,255,255,0.45)';
-    this.ctx.fillText('✦', w / 2, h / 2 + 14);
+    this.ctx.shadowColor = 'rgba(0,0,0,0.2)';
+    this.ctx.shadowBlur = 3;
+    this.ctx.fillStyle = 'rgba(255,255,255,0.95)';
+    this.ctx.font = `bold ${Math.floor(w * 0.42)}px 'DM Sans', sans-serif`;
+    this.ctx.fillText(num, w / 2, h / 2);
+    this.ctx.shadowBlur = 0;
 
     // Events
     this.canvas.addEventListener('mousemove',  this._onMove.bind(this));
@@ -1358,43 +1394,74 @@ class ScratchCard {
     this._lazyInit();
     if (this.isRevealed) return;
     this.isDown = true;
+    this.intentDetermined = false;
+    this.isScrolling = false;
     const pos = this._getPos(e);
+    this.startPos = pos;
     this.lastPos = pos;
-    this._erase(pos, null);
   }
 
   _onMove(e) {
     if (!this.isDown || this.isRevealed) return;
-    if (e.cancelable) e.preventDefault();
     const pos = this._getPos(e);
+
+    // Sur mobile : détecter scroll vs grattage uniquement sur les premiers pixels
+    if (!this.intentDetermined && e.touches) {
+      const dx = Math.abs(pos.x - this.startPos.x);
+      const dy = Math.abs(pos.y - this.startPos.y);
+      if (dx < 3 && dy < 3) return;
+      this.intentDetermined = true;
+      // Scroll seulement si très clairement vertical (ratio 3:1)
+      this.isScrolling = dy > dx * 3;
+    }
+
+    if (this.isScrolling) return;
+
+    if (e.cancelable) e.preventDefault();
     this._erase(pos, this.lastPos);
     this.lastPos = pos;
-    if (++this.moveCount % 8 === 0) this._checkReveal();
+    if (++this.moveCount % 3 === 0) this._checkReveal();
   }
 
   _onEnd() {
     this.isDown = false;
     this.lastPos = null;
+    this.intentDetermined = false;
+    this.isScrolling = false;
   }
 
   _erase(pos, from) {
     if (!this.ctx) return;
     const ctx = this.ctx;
     ctx.globalCompositeOperation = 'destination-out';
-    ctx.lineWidth   = this.radius * 2;
-    ctx.lineCap     = 'round';
-    ctx.lineJoin    = 'round';
+    ctx.lineCap  = 'round';
+    ctx.lineJoin = 'round';
 
+    // Trait principal
+    ctx.lineWidth = this.radius * 2;
+    ctx.beginPath();
     if (from) {
-      ctx.beginPath();
       ctx.moveTo(from.x, from.y);
-      ctx.lineTo(pos.x,  pos.y);
+      ctx.lineTo(pos.x, pos.y);
       ctx.stroke();
     } else {
-      ctx.beginPath();
       ctx.arc(pos.x, pos.y, this.radius, 0, Math.PI * 2);
       ctx.fill();
     }
+
+    // Bords irréguliers façon coin/ongle
+    if (from) {
+      for (let i = 0; i < 3; i++) {
+        const ox = (Math.random() - 0.5) * this.radius * 0.9;
+        const oy = (Math.random() - 0.5) * this.radius * 0.9;
+        ctx.lineWidth = this.radius * (0.25 + Math.random() * 0.4);
+        ctx.beginPath();
+        ctx.moveTo(from.x + ox, from.y + oy);
+        ctx.lineTo(pos.x + ox * 0.4, pos.y + oy * 0.4);
+        ctx.stroke();
+      }
+    }
+
     ctx.globalCompositeOperation = 'source-over';
   }
 
@@ -1407,7 +1474,7 @@ class ScratchCard {
     for (let i = 3; i < pixels.length; i += step) {
       if (pixels[i] < 128) transparent++;
     }
-    if (transparent / (pixels.length / step) > 0.55) this._reveal();
+    if (transparent / (pixels.length / step) > 0.40) this._reveal();
   }
 
   _reveal() {
@@ -1418,10 +1485,6 @@ class ScratchCard {
       alpha -= 0.06;
       if (alpha <= 0) {
         this.canvas.style.display = 'none';
-        const ribbon = document.createElement('div');
-        ribbon.className = 'revealed-ribbon';
-        ribbon.textContent = '✦ Révélé ✦';
-        this.wrapper.appendChild(ribbon);
         // Ouvrir la modal avec le numéro gratté
         openScratchModal(num);
         return;
@@ -1434,18 +1497,32 @@ class ScratchCard {
 }
 
 // ── Modal contact ──
-// Codes de participation valides (60 codes générés pour Nicole)
-const VALID_CODES = [
-  'LK-28XW','LK-2PQL','LK-2UHV','LK-37KP','LK-3SGA','LK-3SR6','LK-3TZ2',
-  'LK-45H8','LK-5X8M','LK-6DVR','LK-6ES3','LK-6WP3','LK-74L7','LK-7BT4',
-  'LK-7RSA','LK-8RZE','LK-8U3E','LK-9739','LK-AAU7','LK-C3HV','LK-D4Q4',
-  'LK-D6BM','LK-DHVT','LK-DJ8F','LK-DS2V','LK-DSS5','LK-DY3S','LK-DYTU',
-  'LK-DZPQ','LK-ELU2','LK-FTUT','LK-GKJT','LK-HEBY','LK-HU86','LK-KMJR',
-  'LK-KQ6Y','LK-LKLD','LK-M2AS','LK-NPPC','LK-PKJB','LK-PNUR','LK-Q2GY',
-  'LK-Q884','LK-QR79','LK-R7JP','LK-R7JR','LK-RCJR','LK-RD33','LK-RH6W',
-  'LK-S43T','LK-S8F5','LK-SCLT','LK-SCX7','LK-SPLV','LK-TTXK','LK-UAYM',
-  'LK-WVQS','LK-X2ZF','LK-XCNG','LK-XXGJ'
-];
+// Palier 1 = 1 numéro (commande >300€) — codes LK-28XW à LK-C3HV
+// Palier 2 = 2 numéros (commande >600€) — codes LK-D4Q4 à LK-PKJB
+// Palier 3 = 3 numéros (commande >900€) — codes LK-PNUR à LK-XXGJ
+const CODE_TO_TICKETS = {
+  'LK-28XW':1,'LK-2PQL':1,'LK-2UHV':1,'LK-37KP':1,'LK-3SGA':1,
+  'LK-3SR6':1,'LK-3TZ2':1,'LK-45H8':1,'LK-5X8M':1,'LK-6DVR':1,
+  'LK-6ES3':1,'LK-6WP3':1,'LK-74L7':1,'LK-7BT4':1,'LK-7RSA':1,
+  'LK-8RZE':1,'LK-8U3E':1,'LK-9739':1,'LK-AAU7':1,'LK-C3HV':1,
+  'LK-D4Q4':2,'LK-D6BM':2,'LK-DHVT':2,'LK-DJ8F':2,'LK-DS2V':2,
+  'LK-DSS5':2,'LK-DY3S':2,'LK-DYTU':2,'LK-DZPQ':2,'LK-ELU2':2,
+  'LK-FTUT':2,'LK-GKJT':2,'LK-HEBY':2,'LK-HU86':2,'LK-KMJR':2,
+  'LK-KQ6Y':2,'LK-LKLD':2,'LK-M2AS':2,'LK-NPPC':2,'LK-PKJB':2,
+  'LK-PNUR':3,'LK-Q2GY':3,'LK-Q884':3,'LK-QR79':3,'LK-R7JP':3,
+  'LK-R7JR':3,'LK-RCJR':3,'LK-RD33':3,'LK-RH6W':3,'LK-S43T':3,
+  'LK-S8F5':3,'LK-SCLT':3,'LK-SCX7':3,'LK-SPLV':3,'LK-TTXK':3,
+  'LK-UAYM':3,'LK-WVQS':3,'LK-X2ZF':3,'LK-XCNG':3,'LK-XXGJ':3,
+};
+const VALID_CODES = Object.keys(CODE_TO_TICKETS);
+
+// Reset test : ajouter ?reset dans l'URL efface les données locales
+if (new URLSearchParams(location.search).has('reset')) {
+  localStorage.removeItem('lk_reserved');
+  localStorage.removeItem('lk_code_states');
+  localStorage.removeItem('lk_used_codes');
+  history.replaceState({}, '', location.pathname);
+}
 
 let currentModalNum = null;
 
@@ -1469,19 +1546,51 @@ function showModalStep(n) {
 function validateCode() {
   const input = document.getElementById('code-input').value.trim().toUpperCase();
   const errorEl = document.getElementById('code-error');
-  const usedCodes = JSON.parse(localStorage.getItem('lk_used_codes') || '[]');
 
-  if (!VALID_CODES.includes(input) || usedCodes.includes(input)) {
+  if (!VALID_CODES.includes(input)) {
     errorEl.classList.add('show');
     return;
   }
+
+  const codeStates = JSON.parse(localStorage.getItem('lk_code_states') || '{}');
+  const allowed = CODE_TO_TICKETS[input];
+  const state = codeStates[input] || { allowed, numbers: [] };
+
+  // Code épuisé ou numéro déjà réservé par ce code
+  if (state.numbers.length >= state.allowed || state.numbers.includes(Number(currentModalNum))) {
+    errorEl.classList.add('show');
+    return;
+  }
+
   errorEl.classList.remove('show');
-  usedCodes.push(input);
-  localStorage.setItem('lk_used_codes', JSON.stringify(usedCodes));
+
+  // Réserver le numéro gratté (pas un numéro pré-assigné)
+  state.numbers.push(Number(currentModalNum));
+  codeStates[input] = state;
+  localStorage.setItem('lk_code_states', JSON.stringify(codeStates));
+
   const reserved = JSON.parse(localStorage.getItem('lk_reserved') || '{}');
   reserved[currentModalNum] = input;
   localStorage.setItem('lk_reserved', JSON.stringify(reserved));
+
+  markNumberTaken(Number(currentModalNum));
+
+  const remaining = state.allowed - state.numbers.length;
   document.getElementById('modal-num-success').textContent = currentModalNum;
+  const remainingEl = document.getElementById('modal-remaining');
+  const bonneChanceEl = document.getElementById('modal-bonne-chance');
+  if (remainingEl) {
+    if (remaining === 0) {
+      remainingEl.textContent = `Vous avez gratté vos ${state.allowed} numéro${state.allowed > 1 ? 's' : ''} !`;
+      if (bonneChanceEl) bonneChanceEl.style.display = '';
+    } else if (remaining === 1) {
+      remainingEl.textContent = `Il vous reste encore 1 numéro à gratter !`;
+      if (bonneChanceEl) bonneChanceEl.style.display = 'none';
+    } else {
+      remainingEl.textContent = `Il vous reste encore ${remaining} numéros à gratter !`;
+      if (bonneChanceEl) bonneChanceEl.style.display = 'none';
+    }
+  }
   showModalStep(4);
 }
 
@@ -1690,7 +1799,9 @@ if ('IntersectionObserver' in window) {
     <div class="modal-step" id="modal-step-4">
       <div class="modal-success-icon">✦</div>
       <p class="modal-title">Numéro réservé !</p>
-      <p class="modal-text">Votre numéro <strong id="modal-num-success"></strong> est bien enregistré.<br/>Bonne chance pour le tirage du 17 août !</p>
+      <p class="modal-text">Votre numéro <strong id="modal-num-success"></strong> est bien enregistré.</p>
+      <p class="modal-text" id="modal-bonne-chance">Bonne chance pour le tirage du 17 août !</p>
+      <p class="modal-text" id="modal-remaining" style="margin-top:12px;font-style:italic;color:var(--gold-dark);"></p>
       <button class="modal-btn-close" onclick="closeModal()">Fermer</button>
     </div>
   </div>
