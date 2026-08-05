@@ -1254,7 +1254,7 @@
 
 // Numéros pris via URL ?pris=5,12,23 (Nicole met à jour le lien partagé)
 const urlParams = new URLSearchParams(location.search);
-const takenNumbers = [1, 3, 4, 7, 10, 15, 19, 22];
+const takenNumbers = [1, 3, 4, 7, 10, 15, 19, 22, 24, 25];
 
 function getReservedNumbers() {
   // Réservations locales (appareil de la cliente)
@@ -1514,7 +1514,8 @@ const CODE_TO_TICKETS = {
   'LK-S8F5':3,'LK-SCLT':3,'LK-SCX7':3,'LK-SPLV':3,'LK-TTXK':3,
   'LK-UAYM':3,'LK-WVQS':3,'LK-X2ZF':3,'LK-XCNG':3,'LK-XXGJ':3,
 };
-const VALID_CODES = Object.keys(CODE_TO_TICKETS);
+const USED_CODES = ['LK-DHVT', 'LK-DJ8F'];
+const VALID_CODES = Object.keys(CODE_TO_TICKETS).filter(c => !USED_CODES.includes(c));
 
 // Reset test : ajouter ?reset dans l'URL efface les données locales
 if (new URLSearchParams(location.search).has('reset')) {
